@@ -5,6 +5,6 @@ aaaaaa
 
 [SPIKE-RT C++ API Referenc](https://jecsugawara.github.io/)
 
-[SPIKE-RT C++ API Referenc](https://jecsugawara.github.io/SPIKE-RT_C++_API_Reference/index.html)
+[SPIKE-RT C++ API Referenc](https://jecsugawara.github.io/html/index.html)
 
-[SPIKE-RT C++ API Referenc](https://jecsugawara.github.io/SPIKE-RT_C++_API_Reference)
+[SPIKE-RT C++ API Referenc](https://jecsugawara.github.io/html/)
