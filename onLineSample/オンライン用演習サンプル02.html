@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PHPプログラミング 第2回 配列とデータの受信</title>
+    <style>
+        :root {
+            --primary-color: #4F5D95;
+            --bg-color: #f8f9fa;
+            --code-bg: #1e1e1e;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+
+        h1 {
+            border-bottom: 4px solid var(--primary-color);
+            padding-bottom: 15px;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        h2 {
+            background: var(--bg-color);
+            padding: 12px 20px;
+            border-left: 6px solid var(--primary-color);
+            margin-top: 40px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        h3 {
+            color: #555;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .code-container {
+            position: relative;
+            margin: 15px 0;
+            background: var(--code-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+            color: #d4d4d4;
+            font-family: 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.95rem;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #fff;
+        }
+
+        .copy-btn.copied {
+            background: #28a745;
+            border-color: #28a745;
+        }
+
+        .exercise {
+            background: #f0f7ff;
+            border: 1px solid #cce3ff;
+            border-left: 6px solid #007bff;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+
+        .exercise-title {
+            font-weight: bold;
+            color: #0056b3;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .hint {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .hint-title {
+            font-weight: bold;
+            color: #856404;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .php-tag {
+            color: #569cd6;
+        }
+
+        hr {
+            border: 0;
+            border-top: 2px dashed #eee;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>第2回：PHPの基本2（配列とデータの受信）</h1>
+
+    <h2>0. 前回の振り返り：おみくじを画像にする</h2>
+    <p><code>echo</code> で <code>&lt;img&gt;</code> タグを出力することで、ブラウザに画像を表示させます。</p>
+
+    <h3>sample05.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+// 1か2をランダムに生成
+$omikuji = rand(1, 2); 
+
+if ($omikuji === 1) {
+    echo "判定：大吉&lt;br&gt;";
+    // &lt;img&gt;タグを出力。パスの指定に注意
+    echo "&lt;img src='picture/daikichi.png' width='150'&gt;";
+} else {
+    echo "判定：小吉&lt;br&gt;";
+    echo "&lt;img src='picture/shokichi.png' width='150'&gt;";
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="hint">
+        <span class="hint-title">【Javaエンジニアへのヒント】</span>
+        echo の中で <code>src='...'</code> とシングルクォートを使っているのは、echo 全体を囲むダブルクォート（"）と衝突しないようにするためです。<br>
+        <code>width='150'</code> のようにサイズを指定しておくと、画像が表示された時にレイアウトが崩れにくくなります。
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex05.php</span>
+        【問題】乱数の範囲を 1〜3 に変更してください。「3」が出た場合には 「中吉（chukichi.png）」 が表示されるように、<code>elseif</code> を使ってプログラムを拡張してください。
+    </div>
+
+    <hr>
+
+    <h2>1. 配列と連想配列の基本</h2>
+    <p>PHPの配列は、Javaの <code>ArrayList</code> と <code>HashMap</code> の両方の性質を持っています。</p>
+
+    <h3>sample06_01.php（インデックス配列）</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+$ary = ["a", "b", "c"];
+$ary[] = "d"; // 末尾に追加
+echo $ary[0]; // 0から始まる
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <h3>sample06_02.php（連想配列）</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+$user = ["name" => "田中", "age"  => 25]; // キー => 値
+echo $user["name"];   // キーを指定して表示
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex06.php</span>
+        【問題】自分の「好きな食べ物」を3つ入れた配列を作成し、<code>var_dump</code> で中身（型や要素数）を確認してください。
+    </div>
+
+    <hr>
+
+    <h2>2. 配列のループ処理 (foreach)</h2>
+    <p>配列の全要素を表示する場合、PHPでは <code>foreach</code> を使うのが一般的です。</p>
+
+    <h3>sample07.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+$colors = ["red" => "赤", "blue" => "青"];
+foreach ($colors as $key => $value) { // キーと値を取り出す
+    echo "$key は日本語で $value です。&lt;br&gt;";
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex07.php</span>
+        【問題】自分の「氏名」「年齢」「出身地」をキーにした連想配列を作成し、<code>foreach</code> を使って「項目名：値」の形式ですべて表示してください。
+    </div>
+
+    <hr>
+
+    <h2>3. データの送信（POST/GET）とテキストボックス</h2>
+    <p><code>method</code> 属性によってデータの受信方法が変わります。入力フォームは拡張子 <code>.html</code> で作成します。</p>
+
+    <h3>sample08.html</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;POST送信&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="sample08.php"&gt;
+        名前: &lt;input type="text" name="txt1"&gt;
+        &lt;input type="submit" value="送信"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <h3>sample08.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;受信&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+<span class="php-tag">&lt;?php</span> echo "入力された内容: " . $_POST['txt1']; <span class="php-tag">?&gt;</span>
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex08.html / ex08.php</span>
+        【問題】GETメソッドを使って「好きな食べ物」を送信し、受信側のプログラムで「あなたの好きな食べ物は〇〇です」と表示させてください。
+        <br><br>
+        <strong>ex08.html</strong>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+   <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;GET演習&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="get" action="ex08.php"&gt;
+        好きな食べ物: &lt;input type="text" name="food"&gt;
+        &lt;input type="submit" value="送信"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>4. ラジオボタンの受信</h2>
+    <p>ラジオボタンは選択された1つの値が送信されます。</p>
+
+    <h3>sample09.html / sample09.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;ラジオボタン&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="sample09.php"&gt;
+        性別: 
+        &lt;input type="radio" name="gender" value="1"&gt;男
+        &lt;input type="radio" name="gender" value="2"&gt;女
+        &lt;input type="submit" value="送信"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+<div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+$sei = isset($_POST['gender']) ? $_POST['gender'] : 3;
+switch ($sei) {
+    case 1: echo "男性ですね"; break;
+    case 2: echo "女性ですね"; break;
+    default: echo "未選択です"; break;
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex09.html / ex09.php</span>
+        【問題】今の気分を「良い」「普通」「悪い」の3つのラジオボタンから選んで送信し、受信側で「今の気分は〇〇ですね」と表示してください。
+        <br><br>
+ 
+        <strong>ex09.html</strong>
+ <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;気分演習&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="ex09.php"&gt;
+        今の気分: 
+        &lt;input type="radio" name="feel" value="良い"&gt;良い
+        &lt;input type="radio" name="feel" value="普通"&gt;普通
+        &lt;input type="radio" name="feel" value="悪い"&gt;悪い
+        &lt;input type="submit" value="送信"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        </div>
+
+    <hr>
+
+    <h2>5. チェックボックス（配列形式）</h2>
+    <p>複数選択させる場合は、<code>name</code> 属性に <code>[]</code> を付けて配列として受け取ります。</p>
+
+    <h3>sample10.html / sample10.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;チェックボックス&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="sample10.php"&gt;
+        趣味:
+        &lt;input type="checkbox" name="hobby[]" value="音楽"&gt;音楽
+        &lt;input type="checkbox" name="hobby[]" value="映画"&gt;映画
+        &lt;input type="submit" value="送信"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span> // sample10.php
+if (isset($_POST['hobby'])) {
+    foreach ($_POST['hobby'] as $value) { 
+        echo "趣味: $value &lt;br&gt;";
+    }
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex10.html / ex10.php</span>
+        【問題】「使用経験のあるプログラミング言語」を複数回答できるチェックボックス（Java, PHP, Pythonなど）を作成し、受信側で選んだものをすべて表示してください。
+        <br><br>
+        <strong>ex10.html</strong>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;言語演習&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;form method="post" action="ex10.php"&gt;
+    使用経験のある言語:
+    &lt;input type="checkbox" name="lang[]" value="Java"&gt;Java
+    &lt;input type="checkbox" name="lang[]" value="PHP"&gt;PHP
+    &lt;input type="checkbox" name="lang[]" value="Python"&gt;Python
+    &lt;input type="submit" value="送信"&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>6. エラーチェック（empty / isset）</h2>
+    <p>入力値の状態によって関数を使い分けます。</p>
+
+    <h3>sample11.html/sample11.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;入力チェック用フォーム&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="sample11.php"&gt;
+        名前：&lt;input type="text" name="txt1"&gt;&lt;br&gt;
+        性別：
+        &lt;input type="radio" name="gender" value="男"&gt;男
+        &lt;input type="radio" name="gender" value="女"&gt;女
+        &lt;input type="submit" value="送信"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+// テキストボックスが空（未入力）かチェック
+if (empty($_POST['txt1'])) {
+    echo "名前を入力してください";
+}
+
+// ラジオボタン等がセットされているかチェック
+if (!isset($_POST['gender'])) {
+    echo "性別を選択してください";
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <hr>
+
+    <h2>7. 三項演算子</h2>
+    <p><code>if ～ else</code> を 1 行で書く方法です。</p>
+
+    <h3>sample12.html/sample12.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;名前入力フォーム&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="sample11.php"&gt;
+        名前：&lt;input type="text" name="name"&gt;
+        &lt;input type="submit" value="送信"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+// 変数 = 条件 ? 真の場合 : 偽の場合;
+$msg = empty($_POST['name']) ? "名無しさん" : $_POST['name'];
+echo "こんにちは、" . $msg . "さん";
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex12.php</span>
+        【問題】三項演算子を使い、<code>$_POST['age']</code> が空なら「未設定」、値があればその数字を代入して表示するプログラムを作成してください。
+                <br><br>
+        <strong>ex12.html</strong>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;年齢入力演習&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="ex11.php"&gt;
+        年齢: &lt;input type="text" name="age"&gt;
+        &lt;input type="submit" value="送信"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+    </div>
+
+    <script>
+        function copyCode(btn) {
+            const pre = btn.nextElementSibling;
+            const code = pre.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.innerText = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerText = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>

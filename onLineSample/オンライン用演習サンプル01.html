@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>PHPプログラミング 第1回 基礎文法</title>
+    <style>
+        :root {
+            --primary-color: #4F5D95;
+            --bg-color: #f8f9fa;
+            --code-bg: #1e1e1e;
+            --text-color: #333;
+        }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.7; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 40px 20px; 
+            color: var(--text-color);
+            background-color: #fff;
+        }
+        h1 { border-bottom: 4px solid var(--primary-color); padding-bottom: 15px; color: var(--primary-color); font-size: 2rem; }
+        h2 { background: var(--bg-color); padding: 12px 20px; border-left: 6px solid var(--primary-color); margin-top: 40px; border-radius: 0 4px 4px 0; }
+        h3 { color: #555; margin-bottom: 10px; font-size: 1.1rem; }
+        
+        /* コードブロックのコンテナ */
+        .code-container {
+            position: relative;
+            margin: 15px 0;
+            background: var(--code-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+            color: #d4d4d4;
+            font-family: 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.95rem;
+        }
+        /* コピーボタン */
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .copy-btn:hover { background: rgba(255,255,255,0.2); border-color: #fff; }
+        .copy-btn.copied { background: #28a745; border-color: #28a745; }
+
+        /* 演習ボックス */
+        .exercise { 
+            background: #f0f7ff; 
+            border: 1px solid #cce3ff;
+            border-left: 6px solid #007bff; 
+            padding: 20px; 
+            margin: 25px 0; 
+            border-radius: 4px;
+        }
+        .exercise-title { 
+            font-weight: bold; 
+            color: #0056b3; 
+            display: block; 
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .php-tag { color: #569cd6; } /* <?php 用の簡易色付け */
+        hr { border: 0; border-top: 2px dashed #eee; margin: 40px 0; }
+    </style>
+</head>
+<body>
+
+    <h1>第1回：PHPの基本文法と制御構造</h1>
+
+    <h2>1. PHPの基本文法</h2>
+    <p>PHPは変数の前に <code>$</code> を付けます。文字列の連結には <code>+</code> ではなく <strong><code>.</code>（ドット）</strong> を使用するのがJavaとの大きな違いです。</p>
+    
+    <h3>sample01.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+// コメント：Javaと同じ
+$subject = "Webプログラミング";
+
+// 変数展開（ダブルクォートは変数の中身を表示できる）
+echo "Hello $subject\n";
+
+// 文字列連結（ドットに注意！）
+echo 'Hello ' . $subject; 
+
+// デバッグ（型と長さを表示。JavaのSystem.out.printlnより詳細）
+var_dump($subject); 
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex01.php</span>
+        自分の学籍番号と氏名を別々の変数に代入し、それらを連結してフルネームで表示してください。<br>
+        また、その結果を <code>var_dump</code> で出力して、文字列の長さ（バイト数）がどうなっているか確認しましょう。
+    </div>
+
+    <h2>2. ループ（繰り返し）</h2>
+    <p><code>for</code> 文の構造はJavaと同じです。PHPではHTMLタグを <code>echo</code> することで動的なページを作成します。</p>
+    
+    <h3>sample02.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+for ($i = 1; $i &lt;= 5; $i++) {
+    // HTMLタグもただの文字列として出力できる
+    echo "&lt;li&gt;項目 $i&lt;/li&gt;";
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex02.php</span>
+        カウンター変数 <code>$i</code> を <strong>10 から始まり 1 で終わる</strong> ように変更し、カウントダウンを表示させてください。
+    </div>
+
+    <h2>3. 条件分岐：if, else, elseif</h2>
+    <p>乱数を発生させる <code>rand(最小, 最大)</code> 関数を使います。Javaの <code>Random</code> クラスより手軽に扱えます。</p>
+
+    <h3>sample03.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+$omikuji = rand(1, 2); // 1か2をランダムに生成
+
+if ($omikuji === 1) {
+    echo "大吉";
+} else {
+    echo "小吉";
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex03.php</span>
+        乱数の範囲を <strong>1〜3</strong> に広げ、<code>elseif</code> を追加して「中吉」も表示されるようにしてください。
+    </div>
+
+    <hr>
+
+    <h2>4. 条件分岐：switch-case</h2>
+    <p>選択肢が多い場合は <code>switch</code> 文が見やすくなります。Java同様、<code>break;</code> を忘れないようにしましょう。</p>
+
+    <h3>sample04.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+$omikuji = rand(1, 3);
+
+switch ($omikuji) {
+    case 1:
+        echo "大吉";
+        break;
+    case 2:
+        echo "中吉";
+        break;
+    case 3:
+        echo "小吉";
+        break;
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex04.php</span>
+        上記の <code>switch</code> 文に <code>default:</code> を追加してください。もし変数 <code>$omikuji</code> が 1〜3 以外だった場合に、<strong>「末吉」</strong> を表示するように改造してください。
+    </div>
+
+    <script>
+        function copyCode(btn) {
+            const pre = btn.nextElementSibling;
+            const code = pre.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.innerText = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerText = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
