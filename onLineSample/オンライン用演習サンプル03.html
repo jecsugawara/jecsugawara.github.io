@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>PHPプログラミング 第3回 関数と外部ファイルの読み込み</title>
+    <style>
+        :root {
+            --primary-color: #4F5D95;
+            --bg-color: #f8f9fa;
+            --code-bg: #1e1e1e;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+        h1 { border-bottom: 4px solid var(--primary-color); padding-bottom: 15px; color: var(--primary-color); font-size: 2rem; }
+        h2 { background: var(--bg-color); padding: 12px 20px; border-left: 6px solid var(--primary-color); margin-top: 40px; border-radius: 0 4px 4px 0; }
+        h3 { color: var(--primary-color); margin-top: 25px; font-size: 1.3rem; border-bottom: 1px solid #eee; }
+        .code-container { position: relative; margin: 15px 0; background: var(--code-bg); border-radius: 8px; }
+        pre { margin: 0; padding: 20px; overflow-x: auto; color: #d4d4d4; font-family: 'Consolas', monospace; font-size: 0.95rem; }
+        .copy-btn { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 4px; cursor: pointer; transition: 0.2s; }
+        .copy-btn:hover { background: rgba(255,255,255,0.2); }
+        .exercise { background: #f0f7ff; border-left: 6px solid #007bff; padding: 20px; margin: 25px 0; border-radius: 4px; }
+        .exercise-title { font-weight: bold; color: #0056b3; display: block; margin-bottom: 10px; }
+        .point-box { background: #fff9db; border: 1px solid #ffec99; padding: 15px; border-radius: 4px; margin-top: 15px; }
+        .point-title { font-weight: bold; color: #f08c00; display: block; margin-bottom: 5px; }
+        .php-tag { color: #569cd6; }
+        hr { border: 0; border-top: 2px dashed #eee; margin: 40px 0; }
+    </style>
+</head>
+<body>
+
+    <h1>第3回：PHPの基本3（関数・外部ファイルの読み込み）</h1>
+
+    <h2>0_1. 振り返り：セレクトボックス入力と表示</h2>
+    <p><strong>【プログラム説明】</strong><br>
+    HTMLの <code>&lt;select&gt;</code> を使い、ドロップダウンリストからデータを選択して送信します。PHP側では、選択された <code>option</code> の <code>value</code> を <code>$_POST</code> で取得します。</p>
+
+    <h3>sample13.html</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;セレクトボックス送信&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="sample13.php"&gt;
+        &lt;p&gt;好きなOSを選択：&lt;/p&gt;
+        &lt;select name="os"&gt;
+            &lt;option value="Windows"&gt;Windows&lt;/option&gt;
+            &lt;option value="macOS"&gt;macOS&lt;/option&gt;
+            &lt;option value="Linux"&gt;Linux&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;input type="submit" value="送信"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <h3>sample13.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+$os = $_POST['os'];
+echo "あなたが選んだOSは " . $os . " です。";
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex13.php</span>
+        <p>セレクトボックスで選択された内容を表示するプログラムを作成してください</p>
+ <strong>ex13.html</strong>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;演習13&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="ex13.php"&gt;
+        &lt;p&gt;今日の朝食は何でしたか？&lt;/p&gt;
+        &lt;select name="breakfast"&gt;
+            &lt;option value="パン"&gt;パン&lt;/option&gt;
+            &lt;option value="ご飯"&gt;ご飯&lt;/option&gt;
+            &lt;option value="食べない"&gt;食べない&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;input type="submit" value="送信"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        <div class="point-box">
+            <span class="point-title">💡 セクションのポイント</span>
+            セレクトボックスでは <code>&lt;select name="〇〇"&gt;</code> の名前がPHPのキーになり、選択された項目の <code>value</code> が値として送信されます。
+        </div>
+    </div>
+
+    <hr>
+<h2>0_2. 振り返り：リンクでデータを送る(GETの応用）</h2>
+    <p><strong>【プログラム説明】</strong><br>
+    <code>&lt;a href="URL?キー=値"&gt;</code> という形式でリンクを作成すると、送信ボタンを使わずにデータを送ることができます。受け取り側のPHPでは <code>$_GET</code> を使って値を取得します。今回は数値（1〜3）に応じて表示する画像を切り替えます。</p>
+
+    <h3>sample14.html</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;sample14&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;今日の天気を選んでください&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="sample14.php?weather=1"&gt;晴れ&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="sample14.php?weather=2"&gt;曇り&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="sample14.php?weather=3"&gt;雨&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <h3>sample14.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+$weather = $_GET['weather'];
+
+if ($weather == "1") {
+    echo '&lt;img src="picture/sunny.png" alt="晴れ"&gt;';
+} elseif ($weather == "2") {
+    echo '&lt;img src="picture/cloudy.png" alt="曇り"&gt;';
+} elseif ($weather == "3") {
+    echo '&lt;img src="picture/rainy.png" alt="雨"&gt;';
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex14.html（画像リンクの作成）</span>
+        <p>「色ボタンの画像」をリンクにして、<strong>ex14.php</strong> でその色に応じたメッセージを表示するプログラムを作成してください。メッセージの内容は自由です。URLパラメータのキー名は <code>color</code> としてください。</p>
+        
+        <strong>ex14.html</strong>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;演習ex14 - カラー選択&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;気になる色をクリックしてください&lt;/h1&gt;
+    &lt;!-- リンクの中に画像を配置 --&gt;
+    &lt;a href="ex14.php?color=red"&gt;
+        &lt;img src="picture/red.png" alt="赤" width="100"&gt;
+    &lt;/a&gt;
+    &lt;a href="ex14.php?color=blue"&gt;
+        &lt;img src="picture/blue.png" alt="青" width="100"&gt;
+    &lt;/a&gt;
+    &lt;a href="ex14.php?color=green"&gt;
+        &lt;img src="picture/green.png" alt="緑" width="100"&gt;
+    &lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        <div class="point-box">
+            <span class="point-title">💡 セクションのポイント</span>
+            <code>&lt;a&gt;</code> タグの中に <code>&lt;img&gt;</code> タグを入れることで、画像全体をリンクボタンにできます。パラメータの値（redなど）を文字列として送り、PHP側の <code>if($_GET['color'] == 'red')</code> などで判定することで、見た目も動作も直感的なインターフェースが作れます。
+        </div>
+    </div>
+
+    <hr>
+    <h2>1. 関数の基本（引数のない関数）</h2>
+    <p><strong>【プログラム説明】</strong><br>
+    決まった処理をまとめて名前をつけることで、どこからでも呼び出せるようになります。まずは引数（データ）を渡さないシンプルな関数を定義します。</p>
+
+    <h3>sample15.html</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;引数なし関数送信&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="sample15.php"&gt;
+        &lt;input type="submit" value="メッセージ実行"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <h3>sample15.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+// 関数の定義
+function foo() {
+    echo "Hello PHP!";
+}
+
+// 関数の呼び出し
+foo();
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex15.php</span>
+        <p>ボタンを押すと「準備完了！」と表示する関数 <code>isReady()</code> を作成し、その関数を呼び出すプログラムを作成してください。</p>
+ <strong>ex15.html</strong>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;演習14&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="ex15.php"&gt;
+        &lt;input type="submit" value="ステータス確認"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        <div class="point-box">
+            <span class="point-title">💡 セクションのポイント</span>
+            関数は <code>function 関数名() { ... }</code> で作成し、使いたい場所で <code>関数名();</code> と書くことで実行されます。
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>2. 引数のある関数</h2>
+    <p><strong>【プログラム説明】</strong><br>
+    関数に外からデータ（引数）を渡して、その値に基づいた処理を行います。PHPは基本が「値渡し」なので、関数内で値を書き換えても元の変数には影響しません。</p>
+
+    <h3>sample16.html</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;引数テスト&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="sample16.php"&gt;
+        数値を入力：&lt;input type="text" name="val"&gt;
+        &lt;input type="submit" value="計算実行"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <h3>sample16.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+function bar($var1) {
+    $var1 = $var1 * 2;
+    echo "関数内の計算結果：" . $var1 . "&lt;br&gt;";
+}
+
+$a = $_POST['val'];
+bar($a); 
+echo "関数呼び出し後の元の変数の値：" . $a;
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex16.php</span>
+        <p>「都市名」が入力されたら、その値を引数にして「現在は〇〇（都市名）の天気を確認中です」と表示する関数 <code>checkWeather($city)</code> を作成し、その関数を呼び出すプログラムLを作成してください。</p>
+ <strong>ex16.html</strong>        <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;演習15&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="ex16.php"&gt;
+        都市名を入力：&lt;input type="text" name="city"&gt;
+        &lt;input type="submit" value="確認"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        <div class="point-box">
+            <span class="point-title">💡 セクションのポイント</span>
+            関数呼び出し時に渡す値を「実引数」、関数側で受け取る変数を「仮引数」と呼びます。
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>3. 戻り値のある関数</h2>
+    <p><strong>【プログラム説明】</strong><br>
+    関数で計算した結果を、<code>return</code> 文を使って呼び出し元に返します。戻された値は変数に代入して再利用できます。</p>
+
+    <h3>sample17.html</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;戻り値テスト&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="sample17.php"&gt;
+        数値1：&lt;input type="text" name="n1"&gt;&lt;br&gt;
+        数値2：&lt;input type="text" name="n2"&gt;&lt;br&gt;
+        &lt;input type="submit" value="足し算"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <h3>sample17.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+function add($var1, $var2) {
+    return $var1 + $var2;
+}
+
+$a = $_POST['n1'];
+$b = $_POST['n2'];
+
+$ans = add($a, $b); 
+echo "計算結果：" . $ans;
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex17.php</span>
+        <p>「1個あたりの価格」と「個数」が入力されたら、合計金額を戻り値として返す関数 <code>calcTotal($price, $count)</code> を作成し、その関数を呼び出すプログラムを作成してください。</p>
+ <strong>ex17.html</strong>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;演習16&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="ex17.php"&gt;
+        単価：&lt;input type="text" name="price"&gt;&lt;br&gt;
+        個数：&lt;input type="text" name="count"&gt;&lt;br&gt;
+        &lt;input type="submit" value="計算"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        <div class="point-box">
+            <span class="point-title">💡 セクションのポイント</span>
+            <code>return</code> が実行されると、その関数の処理は即座に終了します。
+        </div>
+    </div>
+
+    <hr>
+
+     <h2>4. include と require</h2>
+    <p><strong>【プログラム説明】</strong><br>
+    他のファイルに記述されたPHPプログラムを読み込んで実行します。共通の関数集などを別ファイル（ライブラリ）として管理する際に利用します。<code>include</code> は読み込みに失敗しても警告のみで処理を続行しますが、<code>require</code> はエラーとなり処理を停止します。</p>
+
+    <h3>【呼ばれる側】lib.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+    echo "lib.php:外部ライブラリを読み込みました。&lt;br&gt;";
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <h3>【呼ぶ側】sample18.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+include("lib.php"); // ファイルの読み込み
+
+echo "sample18.php";
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex18.php</span>
+        <p>ラジオボタンで選択した時間帯に合わせて、外部ファイル(greeting.php)を呼び出し、挨拶を表示するプログラムを作成してください。</p>
+
+
+
+
+        <strong>ex18.html</strong>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;演習17&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post" action="ex18.php"&gt;
+        &lt;input type="radio" name="time" value="morning" checked&gt;朝
+        &lt;input type="radio" name="time" value="noon"&gt;昼
+        &lt;input type="radio" name="time" value="night"&gt;夜
+        &lt;input type="submit" value="挨拶する"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+
+        <strong>greeting.php</strong>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+function sayMorning() {
+    echo "おはようございます";
+}
+
+function sayNoon() {
+    echo "こんにちは";
+}
+
+function sayNight() {
+    echo "こんばんは";
+}
+<span class="php-tag">?&gt;</span></code></pre>
+        </div>
+
+        <div class="point-box">
+            <span class="point-title">💡 セクションのポイント</span>
+            関数を外部ファイルに切り分けることで、メインの処理（ロジック）がスッキリし、他のファイルでも同じ関数を再利用できるようになります。
+        </div>
+    </div>
+
+    <hr>
+
+
+
+    <h2>5. require_once</h2>
+    <p><strong>【プログラム説明】</strong><br>
+    ファイルを「一度だけ」読み込みます。複数のファイルで共通ライブラリを読み込んでいる場合、重複読み込みによるエラーを防ぎます。</p>
+
+    <h3>sample19.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code><span class="php-tag">&lt;?php</span>
+// 同じファイルを2回指定しても、1度しか読み込まれない
+require_once("lib.php");
+require_once("lib.php");
+
+echo "sample19.php";
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        
+        <div class="point-box">
+            <span class="point-title">💡 セクションのポイント</span>
+            <code>_once</code> 系の関数は、読み込み済みのファイルを記憶しているため、二重定義によるシステムダウンを防止できます。
+        </div>
+    </div>
+
+    <hr>
+    <h2>第3回 振り返りプリント</h2>
+    <div class="point-box" style="background-color: #e8f4fd; border-color: #cce3ff;">
+        <ul>
+            <li><b>関数：</b> <code>function</code> で定義し、名前で呼び出す。</li>
+            <li><b>引数：</b> 関数に渡す値。デフォルトは「値渡し」。</li>
+            <li><b>戻り値：</b> <code>return</code> で結果を返す。</li>
+            <li><b>読み込み：</b> <code>require_once</code> は開発現場で最も多用される読み込み方法。</li>
+        </ul>
+    </div>
+
+    <script>
+        function copyCode(btn) {
+            const pre = btn.nextElementSibling;
+            const code = pre.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.innerText = 'Copied!';
+                setTimeout(() => { btn.innerText = 'Copy'; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
