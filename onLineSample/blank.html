@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<!-- saved from url=(0122)https://n-qcnh7gahp3nl76gxj3achnofo4tmvslp7t5pduq-0lu-script.googleusercontent.com/userCodeAppPanel?createOAuthDialog=true -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./jsapi"></script><script>window.parent.maeExportApis_();</script>
+
+
+
+    
+    <title>PHPプログラミング 第4回 PDOによるデータベース操作</title>
+    <style>
+        :root {
+            --primary-color: #4F5D95;
+            --bg-color: #f8f9fa;
+            --code-bg: #1e1e1e;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+
+        h1 {
+            border-bottom: 4px solid var(--primary-color);
+            padding-bottom: 15px;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        h2 {
+            background: var(--bg-color);
+            padding: 12px 20px;
+            border-left: 6px solid var(--primary-color);
+            margin-top: 40px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .code-container {
+            position: relative;
+            margin: 20px 0;
+            background: var(--code-bg);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+            color: #d4d4d4;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .php-tag {
+            color: #569cd6;
+        }
+
+        .html-tag {
+            color: #569cd6;
+        }
+
+        .attr {
+            color: #9cdcfe;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .comment {
+            color: #6a9955;
+        }
+
+        .keyword {
+            color: #c586c0;
+        }
+
+        .variable {
+            color: #9cdcfe;
+        }
+
+        .exercise {
+            background: #fff9db;
+            border-left: 6px solid #f08c00;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .exercise-title {
+            font-weight: bold;
+            color: #f08c00;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .point-box {
+            background-color: #f1f3f5;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+
+        .point-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 2px dashed #eee;
+            margin: 50px 0;
+        }
+
+        .summary-box {
+            background-color: #e8f4fd;
+            border: 1px solid #cce3ff;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>第4回：PHPの基本4（PDOによるデータベース操作）</h1>
+    <p>
+        ▶ 実習はこちら：
+        <a href="https://paiza.cloud/" target="_blank">
+            paizaCloudを開く
+        </a>
+    </p>
+    
+    <h2>0. 振り返り（require_onceで外部ファイルを読み込む）</h2>
+    <p><strong>【プログラム説明】</strong><br>共通の設定値を別ファイル（config.php）に定義し、require_onceで読み込む方法を確認します。。</p>
+
+    <h3>config.php（共通設定ファイル）</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+<span class="comment">// データベース接続情報の定義</span>
+<span class="keyword">define</span>(<span class="string">'DB_HOST'</span>, <span class="string">'localhost'</span>);
+<span class="keyword">define</span>(<span class="string">'DB_NAME'</span>, <span class="string">'webdb'</span>);
+<span class="keyword">define</span>(<span class="string">'DB_USER'</span>, <span class="string">'dbuser'</span>);
+<span class="keyword">define</span>(<span class="string">'DB_PASS'</span>, <span class="string">'dbpass'</span>);
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <h3>sample21.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+<span class="keyword">require_once</span>(<span class="string">"config.php"</span>);
+<span class="keyword">echo</span> <span class="string">"接続先ホスト: "</span> . DB_HOST;
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <hr>
+    
+    <h2>1. DBの接続</h2>
+    <p><strong>【プログラム説明】</strong><br>
+        PDOを使用してDBに接続します。接続用ファイルを独立させることで、各プログラムからの接続処理を簡略化します。</p>
+
+    <h3>db_connect.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+<span class="keyword">require_once</span>(<span class="string">"config.php"</span>);
+<span class="variable">$dsn</span> = <span class="string">'mysql:host='</span> . DB_HOST . <span class="string">';dbname='</span> . DB_NAME . <span class="string">';charset=utf8'</span>;
+<span class="keyword">try</span> {
+    <span class="variable">$pdo</span> = <span class="keyword">new</span> PDO(<span class="variable">$dsn</span>, DB_USER, DB_PASS);
+} <span class="keyword">catch</span> (PDOException <span class="variable">$e</span>) {
+    <span class="keyword">exit</span>(<span class="string">'データベース接続失敗。'</span> . <span class="variable">$e</span>-&gt;getMessage());
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <h3>sample22.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+<span class="keyword">require_once</span>(<span class="string">"db_connect.php"</span>);
+<span class="keyword">echo</span> <span class="string">"データベース接続に成功しました。"</span>;
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <hr>
+    
+    <h2>2. データの表示（1件）</h2>
+    <p><strong>【プログラム説明】</strong><br>
+        特定の条件に合致するデータを1件取得します。SQL文では「*」を使わず、取得したい列名を明確に指定します。</p>
+
+    <h3>sample23.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+<span class="keyword">require_once</span>(<span class="string">"db_connect.php"</span>);
+
+<span class="comment">// 列名を明記して取得</span>
+<span class="variable">$sql</span> = <span class="string">"SELECT id, username, email FROM w_user WHERE id = 1"</span>;
+<span class="variable">$stmt</span> = <span class="variable">$pdo</span>-&gt;prepare(<span class="variable">$sql</span>);
+<span class="variable">$stmt</span>-&gt;execute();
+
+<span class="variable">$row</span> = <span class="variable">$stmt</span>-&gt;fetch(PDO::FETCH_ASSOC);
+<span class="keyword">if</span> (<span class="variable">$row</span>) {
+    <span class="keyword">echo</span> <span class="string">"ID: "</span> . <span class="variable">$row</span>[<span class="string">'id'</span>] . <span class="string">" 氏名: "</span> . <span class="variable">$row</span>[<span class="string">'username'</span>];
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex23.php</span>
+        <p><code>w_user</code> テーブルからIDが2のレコードの「username」と「address」を列名指定で取得し、表示するプログラムを作成しなさい。</p>
+        <div class="point-box">
+            <span class="point-title">💡 セクションのポイント</span>
+            列名を明記することで、必要なデータのみを取得し、セキュリティとパフォーマンスを向上させます。
+        </div>
+    </div>
+
+    <hr>
+    
+    <h2>3. データの表示（全件）</h2>
+    <p><strong>【プログラム説明】</strong><br>
+        テーブル内のすべてのデータを列名指定で取得し、繰り返し処理で表示します。</p>
+
+    <h3>sample24.php</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+<span class="keyword">require_once</span>(<span class="string">"db_connect.php"</span>);
+
+<span class="variable">$sql</span> = <span class="string">"SELECT id, username FROM w_user"</span>;
+<span class="variable">$stmt</span> = <span class="variable">$pdo</span>-&gt;prepare(<span class="variable">$sql</span>);
+<span class="variable">$stmt</span>-&gt;execute();
+
+<span class="keyword">while</span> (<span class="variable">$row</span> = <span class="variable">$stmt</span>-&gt;fetch(PDO::FETCH_ASSOC)) {
+    <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">'id'</span>] . <span class="string">"："</span> . <span class="variable">$row</span>[<span class="string">'username'</span>] . <span class="string">"&lt;br&gt;"</span>;
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex24.php</span>
+        <p><code>w_user</code> テーブルの全件の「username」と「email」を列名指定で取得し、表形式（table）で表示するプログラムを作成しなさい。</p>
+    </div>
+
+    <hr>
+    
+    <h2>4. プレースホルダーを使った検索</h2>
+    <p><strong>【プログラム説明】</strong><br>
+        入力画面から送られた値を使って検索します。SQLインジェクション対策としてプレースホルダーを使用します。<br>検索結果がない場合の処理を含め、安全に検索機能を実装します。</p>
+
+    <h3>sample25.html（入力画面）</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="html-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="html-tag">&lt;html lang="ja"&gt;</span>
+<span class="html-tag">&lt;head&gt;</span>
+    <span class="html-tag">&lt;meta charset="UTF-8"&gt;</span>
+    <span class="html-tag">&lt;title&gt;</span>検索入力<span class="html-tag">&lt;/title&gt;</span>
+<span class="html-tag">&lt;/head&gt;</span>
+<span class="html-tag">&lt;body&gt;</span>
+    <span class="html-tag">&lt;form</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">action</span>=<span class="string">"sample25.php"</span><span class="html-tag">&gt;</span>
+        氏名検索: <span class="html-tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"u_name"</span><span class="html-tag">&gt;</span>
+        <span class="html-tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"検索"</span><span class="html-tag">&gt;</span>
+    <span class="html-tag">&lt;/form&gt;</span>
+<span class="html-tag">&lt;/body&gt;</span>
+<span class="html-tag">&lt;/html&gt;</span></code></pre>
+    </div>
+    <h3>sample25.php（検索結果表示）</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+<span class="keyword">require_once</span>(<span class="string">"db_connect.php"</span>);
+
+<span class="variable">$name</span> = <span class="variable">$_POST</span>[<span class="string">'u_name'</span>];
+<span class="variable">$sql</span> = <span class="string">"SELECT username, address FROM w_user WHERE username LIKE :target"</span>;
+<span class="variable">$stmt</span> = <span class="variable">$pdo</span>-&gt;prepare(<span class="variable">$sql</span>);
+<span class="variable">$stmt</span>-&gt;bindValue(<span class="string">':target'</span>, <span class="string">'%'</span> . <span class="variable">$name</span> . <span class="string">'%'</span>);
+<span class="variable">$stmt</span>-&gt;execute();
+
+<span class="variable">$results</span> = <span class="variable">$stmt</span>-&gt;fetchAll(PDO::FETCH_ASSOC);
+
+<span class="keyword">if</span> (<span class="keyword">empty</span>(<span class="variable">$results</span>)) {
+    <span class="keyword">echo</span> <span class="string">"検索結果は見つかりませんでした。"</span>;
+} <span class="keyword">else</span> {
+    <span class="keyword">foreach</span> (<span class="variable">$results</span> <span class="keyword">as</span> <span class="variable">$row</span>) {
+        <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">'username'</span>] . <span class="string">"（"</span> . <span class="variable">$row</span>[<span class="string">'address'</span>] . <span class="string">"）&lt;br&gt;"</span>;
+    }
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex25.php</span>
+        <p>住所の一部を入力して検索し、該当者の「username」を表示する処理を作成しなさい。</p>
+        <h3>ex25.html</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre><code><span class="html-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="html-tag">&lt;html lang="ja"&gt;</span>
+<span class="html-tag">&lt;head&gt;</span>
+    <span class="html-tag">&lt;meta charset="UTF-8"&gt;</span>
+        <span class="html-tag">&lt;title&gt;</span>住所検索<span class="html-tag">&lt;/title&gt;</span>
+<span class="html-tag">&lt;/head&gt;</span>
+<span class="html-tag">&lt;body&gt;</span>
+    <span class="html-tag">&lt;form</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">action</span>=<span class="string">"ex25.php"</span><span class="html-tag">&gt;</span>
+        住所検索: <span class="html-tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"u_address"</span><span class="html-tag">&gt;</span>
+        <span class="html-tag">&lt;input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"検索"</span><span class="html-tag">&gt;</span>
+    <span class="html-tag">&lt;/form&gt;</span>
+<span class="html-tag">&lt;/body&gt;</span>
+<span class="html-tag">&lt;/html&gt;</span></code></pre>
+        </div>
+    </div>
+
+    <hr>
+    
+    <h2>5. リンクを使った検索</h2>
+    <p><strong>【プログラム説明】</strong><br>リンクから渡されるパラメータを安全に取得・表示します。</p>
+
+    <h3>sample26.html（選択画面）</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="html-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="html-tag">&lt;html lang="ja"&gt;</span>
+<span class="html-tag">&lt;head&gt;</span>
+    <span class="html-tag">&lt;meta charset="UTF-8"&gt;</span>
+    <span class="html-tag">&lt;title&gt;</span>ユーザー選択<span class="html-tag">&lt;/title&gt;</span>
+<span class="html-tag">&lt;/head&gt;</span>
+<span class="html-tag">&lt;body&gt;</span>
+    <span class="html-tag">&lt;ul&gt;</span>
+        <span class="html-tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="string">"sample26.php?uid=1"</span><span class="html-tag">&gt;</span>ID:1の詳細<span class="html-tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="html-tag">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="string">"sample26.php?uid=3"</span><span class="html-tag">&gt;</span>ID:3の詳細<span class="html-tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="html-tag">&lt;/ul&gt;</span>
+<span class="html-tag">&lt;/body&gt;</span>
+<span class="html-tag">&lt;/html&gt;</span></code></pre>
+    </div>
+    <h3>sample26.php（詳細表示）</h3>
+    <div class="code-container">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <pre><code><span class="php-tag">&lt;?php</span>
+<span class="keyword">require_once</span>(<span class="string">"db_connect.php"</span>);
+<span class="variable">$id</span> = <span class="variable">$_GET</span>[<span class="string">'uid'</span>];
+<span class="variable">$sql</span> = <span class="string">"SELECT username, email FROM w_user WHERE id = :id"</span>;
+<span class="variable">$stmt</span> = <span class="variable">$pdo</span>-&gt;prepare(<span class="variable">$sql</span>);
+<span class="variable">$stmt</span>-&gt;bindValue(<span class="string">':id'</span>, <span class="variable">$id</span>, PDO::PARAM_INT);
+<span class="variable">$stmt</span>-&gt;execute();
+<span class="variable">$row</span> = <span class="variable">$stmt</span>-&gt;fetch(PDO::FETCH_ASSOC);
+<span class="keyword">if</span> (<span class="variable">$row</span>) {
+    <span class="keyword">echo</span> <span class="string">"名前："</span> . <span class="variable">$row</span>[<span class="string">'username'</span>] . <span class="string">"&lt;br&gt;"</span>;
+    <span class="keyword">echo</span> <span class="string">"Email："</span> . <span class="variable">$row</span>[<span class="string">'email'</span>];
+} <span class="keyword">else</span> {
+    <span class="keyword">echo</span> <span class="string">"指定されたユーザーは見つかりません。"</span>;
+}
+<span class="php-tag">?&gt;</span></code></pre>
+    </div>
+
+    <div class="exercise">
+        <span class="exercise-title">📝 演習 ex26.php</span>
+        <p>地域別リンクから、対象ユーザー一覧を表示する処理を作成しなさい。</p>
+        <h3>ex26.html</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre><code><span class="html-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="html-tag">&lt;html lang="ja"&gt;</span>
+<span class="html-tag">&lt;head&gt;</span>
+    <span class="html-tag">&lt;meta charset="UTF-8"&gt;</span>
+    <span class="html-tag">&lt;title&gt;</span>ユーザー抽出<span class="html-tag">&lt;/title&gt;</span>
+<span class="html-tag">&lt;/head&gt;</span>
+<span class="html-tag">&lt;body&gt;</span>
+    <span class="html-tag">&lt;a</span> <span class="attr">href</span>=<span class="string">"ex26.php?place=東京"</span><span class="html-tag">&gt;</span>東京のユーザー<span class="html-tag">&lt;/a&gt;</span>
+    <span class="html-tag">&lt;a</span> <span class="attr">href</span>=<span class="string">"ex26.php?place=愛知"</span><span class="html-tag">&gt;</span>愛知のユーザー<span class="html-tag">&lt;/a&gt;</span>
+<span class="html-tag">&lt;/body&gt;</span>
+<span class="html-tag">&lt;/html&gt;</span></code></pre>
+        </div>
+    </div>
+
+    <div class="summary-box">
+        <h3>第4回 振り返りポイント</h3>
+        <ul>
+            <li><b>config.php：</b> 接続設定を分離し、<code>require_once</code>で読み込む。</li>
+            <li><b>列名の指定：</b> <code>SELECT *</code> ではなく必要な列名を明記する。</li>
+            <li><b>結果の判定：</b> データがない場合のメッセージ処理もプログラムの品質として重要。</li>
+        </ul>
+    </div>
+
+    <script>
+        function copyCode(button) {
+            const container = button.parentElement;
+            const code = container.querySelector('code');
+            const text = code.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copied!';
+                button.style.background = '#4CAF50';
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.style.background = 'rgba(255, 255, 255, 0.1)';
+                }, 2000);
+            });
+        }
+    </script>
+
+
+
+</body></html>
