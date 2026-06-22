@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['scrolltext_53',['scrollText',['../classspikeapi_1_1Display.html#a3ee15d5e0b5c8c640cdda91cc5e8fcb5',1,'spikeapi::Display']]],
+  ['setdetectablecolors_54',['setDetectableColors',['../classspikeapi_1_1ColorSensor.html#a2af701f720b93c63dcd53d36604381e3',1,'spikeapi::ColorSensor']]],
+  ['setdutylimit_55',['setDutyLimit',['../classspikeapi_1_1Motor.html#a7523adaf8deea1080a862b8b720f348f',1,'spikeapi::Motor']]],
+  ['setimage_56',['setImage',['../classspikeapi_1_1Display.html#a7615ecc39c6788371bebccbebf46ae7c',1,'spikeapi::Display']]],
+  ['setlight_57',['setLight',['../classspikeapi_1_1ColorSensor.html#a3bebef09de2dbffe897d0dd8e9783923',1,'spikeapi::ColorSensor::setLight()'],['../classspikeapi_1_1UltrasonicSensor.html#ad7c9af479983dcb0d4a626b1219eb9f3',1,'spikeapi::UltrasonicSensor::setLight()']]],
+  ['setonepixel_58',['setOnePixel',['../classspikeapi_1_1Display.html#aec7b3b33b71dc24d169005ad771a5452',1,'spikeapi::Display']]],
+  ['setorientation_59',['setOrientation',['../classspikeapi_1_1Display.html#a5750f97c13e3a3bbafe77d205f469bb2',1,'spikeapi::Display']]],
+  ['setpower_60',['setPower',['../classspikeapi_1_1Motor.html#a370e80ea6ad318a30d2f4605d23d416a',1,'spikeapi::Motor']]],
+  ['setspeed_61',['setSpeed',['../classspikeapi_1_1Motor.html#abdc810525beab3b29a85ef0f646c5b7e',1,'spikeapi::Motor']]],
+  ['settilt_62',['setTilt',['../classspikeapi_1_1IMU.html#a342f1d2234dfbd19c77ead79ddec63ae',1,'spikeapi::IMU']]],
+  ['setvolume_63',['setVolume',['../classspikeapi_1_1Speaker.html#a14af2f38dccd767c013dafdf76cc2d8f',1,'spikeapi::Speaker']]],
+  ['showchar_64',['showChar',['../classspikeapi_1_1Display.html#a4c84b54088e17ae2dee023a0106758dc',1,'spikeapi::Display']]],
+  ['shownumber_65',['showNumber',['../classspikeapi_1_1Display.html#ad4eb430583bb860218f63e0cde62d5ee',1,'spikeapi::Display']]],
+  ['showtext_66',['showText',['../classspikeapi_1_1Display.html#a506a923cd847f4eaac6493bd94478207',1,'spikeapi::Display']]],
+  ['sleep_67',['sleep',['../classspikeapi_1_1Clock.html#a6d2fbf372e3900f5caf4f450a11088aa',1,'spikeapi::Clock']]],
+  ['speaker_68',['Speaker',['../classspikeapi_1_1Speaker.html#a17a965ae30e0cf90a9585c7ba7232a7d',1,'spikeapi::Speaker::Speaker()'],['../classspikeapi_1_1Speaker.html',1,'spikeapi::Speaker']]],
+  ['stop_69',['stop',['../classspikeapi_1_1Motor.html#a12acbab337688b936ec2afac6b0b2f69',1,'spikeapi::Motor::stop()'],['../classspikeapi_1_1Speaker.html#a87e7157e31ad6c36b6287f669f11f84c',1,'spikeapi::Speaker::stop()']]]
+];
