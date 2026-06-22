@@ -108,7 +108,8 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>SPIKE ハブ内蔵IMUクラス このクラスはSPIKEハブの内蔵IMUセンサーを操作するためのインターフェースを提供します。 </p>
-<p>【add Sugawara】 IMU(Inertial Measurement Unit)クラスとは慣性計測ユニットのことでジャイロセンサーや加速度センサーのことです。 </p>
+<p>【add Sugawara】 IMU(Inertial Measurement Unit)クラスとは慣性計測ユニットのことでジャイロセンサーや加速度センサーのことです。また、角度は右ねじの方向が正です。</p>
+
 </div>
 <img src="SPIKE-hub-xyz.jpg" alt="SPIKEハブのXYZ軸の説明図" width="800"/>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -174,11 +175,13 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structspikeapi_1_1IMU_1_1AngularVelocity.html">AngularVelocity</a> &amp;&#160;</td>
           <td class="paramname"><em>ang</em></td><td>)</td>
-          <td></td>
+          <td></td
         </tr>
       </table>
 </div><div class="memdoc">
-<p>IMUから角速度を取得する </p><dl class="params"><dt>Parameters</dt><dd>
+<p>IMUから角速度を取得する<br>角速度は1秒あたりに変化する角度です。IMUのサンプリングレートは833Hzなので、正確な角度を取得するには角速度を積分する必要があります。</p>
+<p>【add Sugawara】 角速度は1秒あたりに変化する角度です。IMUのサンプリングレートは833Hzなので、正確な角度を取得するには、角速度を積分する必要があります。 </
+  は/p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ang</td><td>[out] x/y/z軸の角速度を格納するためのAngularVelocity構造体[°/s] </td></tr>
   </table>
