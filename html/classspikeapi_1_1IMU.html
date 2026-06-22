@@ -179,7 +179,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>IMUから角速度を取得する<br>角速度は1秒あたりに変化する角度です。IMUのサンプリングレートは833Hzなので、正確な角度を取得するには角速度を積分する必要があります。</p>
+<p>IMUから角速度を取得する<br>角速度は1秒あたりに変化する角度です。回転した正確な角度を取得するには角速度を積分する必要があります。<br>
+また、IMUのサンプリングレートは833Hz(1秒間に833回計測する)です。</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ang</td><td>[out] x/y/z軸の角速度を格納するためのAngularVelocity構造体[°/s] </td></tr>
