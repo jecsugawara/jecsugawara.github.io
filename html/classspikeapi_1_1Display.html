@@ -68,7 +68,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">公開型</a> &#124;
 <a href="#pub-methods">公開メンバ関数</a> &#124;
-<a href="#pub-attribs">公開変数類</a> &#124;
 <a href="classspikeapi_1_1Display-members.html">全メンバ一覧</a>  </div>
   <div class="headertitle">
 <div class="title">spikeapi::Display クラス</div>  </div>
@@ -116,14 +115,9 @@ $(function() {
 <tr class="memitem:a506a923cd847f4eaac6493bd94478207"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1Display.html#a506a923cd847f4eaac6493bd94478207">showText</a> (const char *text, uint32_t on, uint32_t <a class="el" href="classspikeapi_1_1Display.html#a13fd67239a562d5193666adb92d35d84">off</a>)</td></tr>
 <tr class="memdesc:a506a923cd847f4eaac6493bd94478207"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列を表示する。一文字ずつ一定時間で点灯・消灯する  <a href="classspikeapi_1_1Display.html#a506a923cd847f4eaac6493bd94478207">[詳解]</a><br /></td></tr>
 <tr class="separator:a506a923cd847f4eaac6493bd94478207"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8a20fa3691ae49ba1f26b5a31f5bcf9"><td class="memItemLeft" align="right" valign="top">*param text 表示する文字列 *param delay&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1Display.html#aa8a20fa3691ae49ba1f26b5a31f5bcf9">スクロールの感覚</a> (ms) *return - */void scrollText(const char *text</td></tr>
-<tr class="memdesc:aa8a20fa3691ae49ba1f26b5a31f5bcf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列をスクロールして表示する。  <a href="classspikeapi_1_1Display.html#aa8a20fa3691ae49ba1f26b5a31f5bcf9">[詳解]</a><br /></td></tr>
-<tr class="separator:aa8a20fa3691ae49ba1f26b5a31f5bcf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-公開変数類</h2></td></tr>
-<tr class="memitem:a42b41171c749ec253e1b1631bc1c2a85"><td class="memItemLeft" align="right" valign="top">*param text 表示する文字列 *param delay uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>delay</b></td></tr>
-<tr class="separator:a42b41171c749ec253e1b1631bc1c2a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ee15d5e0b5c8c640cdda91cc5e8fcb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1Display.html#a3ee15d5e0b5c8c640cdda91cc5e8fcb5">scrollText</a> (const char *text, uint32_t delay)</td></tr>
+<tr class="memdesc:a3ee15d5e0b5c8c640cdda91cc5e8fcb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列をスクロールして表示する。  <a href="classspikeapi_1_1Display.html#a3ee15d5e0b5c8c640cdda91cc5e8fcb5">[詳解]</a><br /></td></tr>
+<tr class="separator:a3ee15d5e0b5c8c640cdda91cc5e8fcb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>SPIKE <a class="el" href="classspikeapi_1_1Display.html" title="SPIKE Display クラス">Display</a> クラス </p>
@@ -155,6 +149,52 @@ $(function() {
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">-</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>- </dd></dl>
+
+</div>
+</div>
+<a id="a3ee15d5e0b5c8c640cdda91cc5e8fcb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ee15d5e0b5c8c640cdda91cc5e8fcb5">&#9670;&nbsp;</a></span>scrollText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void spikeapi::Display::scrollText </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>delay</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>文字列をスクロールして表示する。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>表示する文字列 </td></tr>
+    <tr><td class="paramname">delay</td><td>スクロールの感覚(ms) </td></tr>
   </table>
   </dd>
 </dl>
@@ -406,51 +446,6 @@ $(function() {
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>- </dd></dl>
 
-</div>
-</div>
-<a id="aa8a20fa3691ae49ba1f26b5a31f5bcf9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8a20fa3691ae49ba1f26b5a31f5bcf9">&#9670;&nbsp;</a></span>スクロールの感覚()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">* param text 表示する文字列* param delay spikeapi::Display::スクロールの感覚 </td>
-          <td>(</td>
-          <td class="paramtype">ms&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>文字列をスクロールして表示する。 </p>
-<dl class="params"><dt>引数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">text</td><td>表示する文字列 </td></tr>
-    <tr><td class="paramname">delay</td><td>スクロールの感覚(ms) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>戻り値</dt><dd>- </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">メンバ詳解</h2>
-<a id="a42b41171c749ec253e1b1631bc1c2a85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42b41171c749ec253e1b1631bc1c2a85">&#9670;&nbsp;</a></span>delay</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">* param text 表示する文字列* param delay uint32_t spikeapi::Display::delay</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>初期値:</b><div class="fragment"><div class="line">{</div>
-<div class="line">      hub_display_text_scroll(text,delay)</div>
-</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>

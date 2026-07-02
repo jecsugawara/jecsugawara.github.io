@@ -46,8 +46,7 @@ var menudata={children:[
 {text:"s",url:"functions.html#index_s"},
 {text:"t",url:"functions.html#index_t"},
 {text:"u",url:"functions.html#index_u"},
-{text:"w",url:"functions.html#index_w"},
-{text:"ス",url:"functions.html#index_a0xe382b9"}]},
+{text:"w",url:"functions.html#index_w"}]},
 {text:"関数",url:"functions_func.html",children:[
 {text:"b",url:"functions_func.html#index_b"},
 {text:"c",url:"functions_func.html#index_c"},
@@ -65,8 +64,7 @@ var menudata={children:[
 {text:"s",url:"functions_func.html#index_s"},
 {text:"t",url:"functions_func.html#index_t"},
 {text:"u",url:"functions_func.html#index_u"},
-{text:"w",url:"functions_func.html#index_w"},
-{text:"ス",url:"functions_func.html#index_a0xe382b9"}]},
+{text:"w",url:"functions_func.html#index_w"}]},
 {text:"列挙型",url:"functions_enum.html"}]}]},
 {text:"ファイル",url:"files.html",children:[
 {text:"ファイル一覧",url:"files.html"}]}]}
