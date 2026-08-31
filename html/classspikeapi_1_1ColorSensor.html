@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>My Project: spikeapi::ColorSensor クラス</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -19,8 +19,8 @@
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
- <tr style="height: 56px;">
-  <td id="projectalign" style="padding-left: 0.5em;">
+ <tr id="projectrow">
+  <td id="projectalign">
    <div id="projectname">My Project
    </div>
   </td>
@@ -29,21 +29,22 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 構築: Doxygen 1.9.1 -->
+<!-- 構築: Doxygen 1.9.8 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
   $(document).ready(function() { init_search(); });
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -54,9 +55,16 @@ $(function() {
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
 </div>
 
 <div id="nav-path" class="navpath">
@@ -69,8 +77,7 @@ $(function() {
 <a href="#nested-classes">クラス</a> &#124;
 <a href="#pub-methods">公開メンバ関数</a> &#124;
 <a href="classspikeapi_1_1ColorSensor-members.html">全メンバ一覧</a>  </div>
-  <div class="headertitle">
-<div class="title">spikeapi::ColorSensor クラス</div>  </div>
+  <div class="headertitle"><div class="title">spikeapi::ColorSensor クラス</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -79,7 +86,7 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="ColorSensor_8h_source.html">ColorSensor.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 クラス</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structspikeapi_1_1ColorSensor_1_1HSV.html">HSV</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HSV構造体  <a href="structspikeapi_1_1ColorSensor_1_1HSV.html#details">[詳解]</a><br /></td></tr>
@@ -88,47 +95,49 @@ $(function() {
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RGB構造体  <a href="structspikeapi_1_1ColorSensor_1_1RGB.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:a55ff81c2c64ea5296b85f20db9dd6668"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a55ff81c2c64ea5296b85f20db9dd6668">ColorSensor</a> (EPort port)</td></tr>
-<tr class="memdesc:a55ff81c2c64ea5296b85f20db9dd6668"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classspikeapi_1_1ColorSensor.html#a55ff81c2c64ea5296b85f20db9dd6668">[詳解]</a><br /></td></tr>
+<tr class="memitem:a55ff81c2c64ea5296b85f20db9dd6668" id="r_a55ff81c2c64ea5296b85f20db9dd6668"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a55ff81c2c64ea5296b85f20db9dd6668">ColorSensor</a> (EPort port)</td></tr>
+<tr class="memdesc:a55ff81c2c64ea5296b85f20db9dd6668"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 <tr class="separator:a55ff81c2c64ea5296b85f20db9dd6668"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e16f781f1dcbe6377bfd6120843c23a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a2e16f781f1dcbe6377bfd6120843c23a">getRGB</a> (<a class="el" href="structspikeapi_1_1ColorSensor_1_1RGB.html">RGB</a> &amp;rgb) const</td></tr>
-<tr class="memdesc:a2e16f781f1dcbe6377bfd6120843c23a"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーのRGB値を取得する  <a href="classspikeapi_1_1ColorSensor.html#a2e16f781f1dcbe6377bfd6120843c23a">[詳解]</a><br /></td></tr>
+<tr class="memitem:a2e16f781f1dcbe6377bfd6120843c23a" id="r_a2e16f781f1dcbe6377bfd6120843c23a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a2e16f781f1dcbe6377bfd6120843c23a">getRGB</a> (<a class="el" href="structspikeapi_1_1ColorSensor_1_1RGB.html">RGB</a> &amp;rgb) const</td></tr>
+<tr class="memdesc:a2e16f781f1dcbe6377bfd6120843c23a"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーのRGB値を取得する  <br /></td></tr>
 <tr class="separator:a2e16f781f1dcbe6377bfd6120843c23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73643cdb18503b388cbc87ccc059ff4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a73643cdb18503b388cbc87ccc059ff4a">getColor</a> (<a class="el" href="structspikeapi_1_1ColorSensor_1_1HSV.html">HSV</a> &amp;hsv, bool surface=true) const</td></tr>
-<tr class="memdesc:a73643cdb18503b388cbc87ccc059ff4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーで色を測定する  <a href="classspikeapi_1_1ColorSensor.html#a73643cdb18503b388cbc87ccc059ff4a">[詳解]</a><br /></td></tr>
+<tr class="memitem:a73643cdb18503b388cbc87ccc059ff4a" id="r_a73643cdb18503b388cbc87ccc059ff4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a73643cdb18503b388cbc87ccc059ff4a">getColor</a> (<a class="el" href="structspikeapi_1_1ColorSensor_1_1HSV.html">HSV</a> &amp;hsv, bool surface=true) const</td></tr>
+<tr class="memdesc:a73643cdb18503b388cbc87ccc059ff4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーで色を測定する  <br /></td></tr>
 <tr class="separator:a73643cdb18503b388cbc87ccc059ff4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99e63864f0ae4bdfb4b0f29382ad85d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a99e63864f0ae4bdfb4b0f29382ad85d4">getHSV</a> (<a class="el" href="structspikeapi_1_1ColorSensor_1_1HSV.html">HSV</a> &amp;hsv, bool surface=true) const</td></tr>
-<tr class="memdesc:a99e63864f0ae4bdfb4b0f29382ad85d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーで色を測定する（近似なし）  <a href="classspikeapi_1_1ColorSensor.html#a99e63864f0ae4bdfb4b0f29382ad85d4">[詳解]</a><br /></td></tr>
+<tr class="memitem:a99e63864f0ae4bdfb4b0f29382ad85d4" id="r_a99e63864f0ae4bdfb4b0f29382ad85d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a99e63864f0ae4bdfb4b0f29382ad85d4">getHSV</a> (<a class="el" href="structspikeapi_1_1ColorSensor_1_1HSV.html">HSV</a> &amp;hsv, bool surface=true) const</td></tr>
+<tr class="memdesc:a99e63864f0ae4bdfb4b0f29382ad85d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーで色を測定する（近似なし）  <br /></td></tr>
 <tr class="separator:a99e63864f0ae4bdfb4b0f29382ad85d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94f19a2ba0c6edc1d97bd57f77c03365"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a94f19a2ba0c6edc1d97bd57f77c03365">getReflection</a> () const</td></tr>
-<tr class="memdesc:a94f19a2ba0c6edc1d97bd57f77c03365"><td class="mdescLeft">&#160;</td><td class="mdescRight">センサーの発する光を表面がどの程度反射するかを測定する  <a href="classspikeapi_1_1ColorSensor.html#a94f19a2ba0c6edc1d97bd57f77c03365">[詳解]</a><br /></td></tr>
+<tr class="memitem:a94f19a2ba0c6edc1d97bd57f77c03365" id="r_a94f19a2ba0c6edc1d97bd57f77c03365"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a94f19a2ba0c6edc1d97bd57f77c03365">getReflection</a> () const</td></tr>
+<tr class="memdesc:a94f19a2ba0c6edc1d97bd57f77c03365"><td class="mdescLeft">&#160;</td><td class="mdescRight">センサーの発する光を表面がどの程度反射するかを測定する  <br /></td></tr>
 <tr class="separator:a94f19a2ba0c6edc1d97bd57f77c03365"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adadc7d044b06b63cc7467c315588a951"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#adadc7d044b06b63cc7467c315588a951">getAmbient</a> () const</td></tr>
-<tr class="memdesc:adadc7d044b06b63cc7467c315588a951"><td class="mdescLeft">&#160;</td><td class="mdescRight">周囲の光の強度を測定する  <a href="classspikeapi_1_1ColorSensor.html#adadc7d044b06b63cc7467c315588a951">[詳解]</a><br /></td></tr>
+<tr class="memitem:adadc7d044b06b63cc7467c315588a951" id="r_adadc7d044b06b63cc7467c315588a951"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#adadc7d044b06b63cc7467c315588a951">getAmbient</a> () const</td></tr>
+<tr class="memdesc:adadc7d044b06b63cc7467c315588a951"><td class="mdescLeft">&#160;</td><td class="mdescRight">周囲の光の強度を測定する  <br /></td></tr>
 <tr class="separator:adadc7d044b06b63cc7467c315588a951"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bebef09de2dbffe897d0dd8e9783923"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a3bebef09de2dbffe897d0dd8e9783923">setLight</a> (int32_t bv1, int32_t bv2, int32_t bv3) const</td></tr>
-<tr class="memdesc:a3bebef09de2dbffe897d0dd8e9783923"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーのライトを設定する  <a href="classspikeapi_1_1ColorSensor.html#a3bebef09de2dbffe897d0dd8e9783923">[詳解]</a><br /></td></tr>
+<tr class="memitem:a3bebef09de2dbffe897d0dd8e9783923" id="r_a3bebef09de2dbffe897d0dd8e9783923"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a3bebef09de2dbffe897d0dd8e9783923">setLight</a> (int32_t bv1, int32_t bv2, int32_t bv3) const</td></tr>
+<tr class="memdesc:a3bebef09de2dbffe897d0dd8e9783923"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーのライトを設定する  <br /></td></tr>
 <tr class="separator:a3bebef09de2dbffe897d0dd8e9783923"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac606da44e4f69f8b3226d018cd404ee0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#ac606da44e4f69f8b3226d018cd404ee0">lightOn</a> () const</td></tr>
-<tr class="memdesc:ac606da44e4f69f8b3226d018cd404ee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーのライトを点灯する  <a href="classspikeapi_1_1ColorSensor.html#ac606da44e4f69f8b3226d018cd404ee0">[詳解]</a><br /></td></tr>
+<tr class="memitem:ac606da44e4f69f8b3226d018cd404ee0" id="r_ac606da44e4f69f8b3226d018cd404ee0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#ac606da44e4f69f8b3226d018cd404ee0">lightOn</a> () const</td></tr>
+<tr class="memdesc:ac606da44e4f69f8b3226d018cd404ee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーのライトを点灯する  <br /></td></tr>
 <tr class="separator:ac606da44e4f69f8b3226d018cd404ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a540cf67fb329ec8609b81cb6fae944d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a540cf67fb329ec8609b81cb6fae944d4">lightOff</a> () const</td></tr>
-<tr class="memdesc:a540cf67fb329ec8609b81cb6fae944d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーのライトを消灯する  <a href="classspikeapi_1_1ColorSensor.html#a540cf67fb329ec8609b81cb6fae944d4">[詳解]</a><br /></td></tr>
+<tr class="memitem:a540cf67fb329ec8609b81cb6fae944d4" id="r_a540cf67fb329ec8609b81cb6fae944d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a540cf67fb329ec8609b81cb6fae944d4">lightOff</a> () const</td></tr>
+<tr class="memdesc:a540cf67fb329ec8609b81cb6fae944d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーのライトを消灯する  <br /></td></tr>
 <tr class="separator:a540cf67fb329ec8609b81cb6fae944d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2af701f720b93c63dcd53d36604381e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a2af701f720b93c63dcd53d36604381e3">setDetectableColors</a> (int32_t size, pup_color_hsv_t *colors) const</td></tr>
-<tr class="memdesc:a2af701f720b93c63dcd53d36604381e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーが検知する色を設定する  <a href="classspikeapi_1_1ColorSensor.html#a2af701f720b93c63dcd53d36604381e3">[詳解]</a><br /></td></tr>
+<tr class="memitem:a2af701f720b93c63dcd53d36604381e3" id="r_a2af701f720b93c63dcd53d36604381e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a2af701f720b93c63dcd53d36604381e3">setDetectableColors</a> (int32_t size, pup_color_hsv_t *colors) const</td></tr>
+<tr class="memdesc:a2af701f720b93c63dcd53d36604381e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">カラーセンサーが検知する色を設定する  <br /></td></tr>
 <tr class="separator:a2af701f720b93c63dcd53d36604381e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ddea3e4ca41647b0083041eb6cbae1a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a2ddea3e4ca41647b0083041eb6cbae1a">hasError</a> ()</td></tr>
-<tr class="memdesc:a2ddea3e4ca41647b0083041eb6cbae1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">インスタンス生成が正常にできたかどうかを確認するための共通メソッド  <a href="classspikeapi_1_1ColorSensor.html#a2ddea3e4ca41647b0083041eb6cbae1a">[詳解]</a><br /></td></tr>
+<tr class="memitem:a2ddea3e4ca41647b0083041eb6cbae1a" id="r_a2ddea3e4ca41647b0083041eb6cbae1a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspikeapi_1_1ColorSensor.html#a2ddea3e4ca41647b0083041eb6cbae1a">hasError</a> ()</td></tr>
+<tr class="memdesc:a2ddea3e4ca41647b0083041eb6cbae1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">インスタンス生成が正常にできたかどうかを確認するための共通メソッド  <br /></td></tr>
 <tr class="separator:a2ddea3e4ca41647b0083041eb6cbae1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>SPIKE カラーセンサークラス </p>
+<p>サンプリングレートは100Hz。最適な読み取り距離は16mm(10mm～300mm)<br  />
+ getDistance()はブロッキングしない。呼び出すと即座に値を返すが、この値はカーネルが保持している最新のキャッシュ値である。 センサーのサンプリングレートは100Hzであるから10ミリ秒に１回測定している。しかし、実際にはセンサー内での計算時間(10ms)、 RTOSのI/O更新周期(センサーとのシリアル通信)10msが掛かるため、合計20msサンプリング遅延(レイテンシ)が発生する。 つまり、APIで取得した距離は20ms前の値で、最短10msごとに更新される。 </p>
 </div><h2 class="groupheader">構築子と解体子</h2>
-<a id="a55ff81c2c64ea5296b85f20db9dd6668"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55ff81c2c64ea5296b85f20db9dd6668">&#9670;&nbsp;</a></span>ColorSensor()</h2>
+<a id="a55ff81c2c64ea5296b85f20db9dd6668" name="a55ff81c2c64ea5296b85f20db9dd6668"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55ff81c2c64ea5296b85f20db9dd6668">&#9670;&#160;</a></span>ColorSensor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -162,8 +171,8 @@ $(function() {
 </div>
 </div>
 <h2 class="groupheader">関数詳解</h2>
-<a id="adadc7d044b06b63cc7467c315588a951"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adadc7d044b06b63cc7467c315588a951">&#9670;&nbsp;</a></span>getAmbient()</h2>
+<a id="adadc7d044b06b63cc7467c315588a951" name="adadc7d044b06b63cc7467c315588a951"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adadc7d044b06b63cc7467c315588a951">&#9670;&#160;</a></span>getAmbient()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -186,12 +195,12 @@ $(function() {
 </div><div class="memdoc">
 
 <p>周囲の光の強度を測定する </p>
-<dl class="section return"><dt>戻り値</dt><dd>周囲の光の強度（％） </dd></dl>
+<p>このAPIはブロッキングしない。サンプリングレートは100Hz。レイテンシは20ms。 </p><dl class="section return"><dt>戻り値</dt><dd>周囲の光の強度（％） </dd></dl>
 
 </div>
 </div>
-<a id="a73643cdb18503b388cbc87ccc059ff4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73643cdb18503b388cbc87ccc059ff4a">&#9670;&nbsp;</a></span>getColor()</h2>
+<a id="a73643cdb18503b388cbc87ccc059ff4a" name="a73643cdb18503b388cbc87ccc059ff4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73643cdb18503b388cbc87ccc059ff4a">&#9670;&#160;</a></span>getColor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,7 +234,7 @@ $(function() {
 </div><div class="memdoc">
 
 <p>カラーセンサーで色を測定する </p>
-<dl class="params"><dt>引数</dt><dd>
+<p>このAPIはブロッキングしない。サンプリングレートは100Hz。レイテンシは20ms。 </p><dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">surface</td><td>trueならば表面の色から、falseならば他の光源の色を検出する </td></tr>
   </table>
@@ -235,8 +244,8 @@ $(function() {
 
 </div>
 </div>
-<a id="a99e63864f0ae4bdfb4b0f29382ad85d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99e63864f0ae4bdfb4b0f29382ad85d4">&#9670;&nbsp;</a></span>getHSV()</h2>
+<a id="a99e63864f0ae4bdfb4b0f29382ad85d4" name="a99e63864f0ae4bdfb4b0f29382ad85d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99e63864f0ae4bdfb4b0f29382ad85d4">&#9670;&#160;</a></span>getHSV()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -270,7 +279,7 @@ $(function() {
 </div><div class="memdoc">
 
 <p>カラーセンサーで色を測定する（近似なし） </p>
-<dl class="params"><dt>引数</dt><dd>
+<p>このAPIはブロッキングしない。サンプリングレートは100Hz。レイテンシは20ms。 </p><dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">surface</td><td>trueならば表面の色から、falseならば他の光源の色を検出する </td></tr>
   </table>
@@ -280,8 +289,8 @@ $(function() {
 
 </div>
 </div>
-<a id="a94f19a2ba0c6edc1d97bd57f77c03365"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94f19a2ba0c6edc1d97bd57f77c03365">&#9670;&nbsp;</a></span>getReflection()</h2>
+<a id="a94f19a2ba0c6edc1d97bd57f77c03365" name="a94f19a2ba0c6edc1d97bd57f77c03365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94f19a2ba0c6edc1d97bd57f77c03365">&#9670;&#160;</a></span>getReflection()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -304,12 +313,12 @@ $(function() {
 </div><div class="memdoc">
 
 <p>センサーの発する光を表面がどの程度反射するかを測定する </p>
-<dl class="section return"><dt>戻り値</dt><dd>どの程度反射しているか（％） </dd></dl>
+<p>このAPIはブロッキングしない。サンプリングレートは100Hz。レイテンシは20ms。 </p><dl class="section return"><dt>戻り値</dt><dd>どの程度反射しているか（％） </dd></dl>
 
 </div>
 </div>
-<a id="a2e16f781f1dcbe6377bfd6120843c23a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e16f781f1dcbe6377bfd6120843c23a">&#9670;&nbsp;</a></span>getRGB()</h2>
+<a id="a2e16f781f1dcbe6377bfd6120843c23a" name="a2e16f781f1dcbe6377bfd6120843c23a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e16f781f1dcbe6377bfd6120843c23a">&#9670;&#160;</a></span>getRGB()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -333,7 +342,7 @@ $(function() {
 </div><div class="memdoc">
 
 <p>カラーセンサーのRGB値を取得する </p>
-<dl class="params"><dt>引数</dt><dd>
+<p>このAPIはブロッキングしない。サンプリングレートは100Hz。レイテンシは20ms。 </p><dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">値を設定するRGB構造体、各色8ビット</td><td></td></tr>
   </table>
@@ -343,8 +352,8 @@ $(function() {
 
 </div>
 </div>
-<a id="a2ddea3e4ca41647b0083041eb6cbae1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ddea3e4ca41647b0083041eb6cbae1a">&#9670;&nbsp;</a></span>hasError()</h2>
+<a id="a2ddea3e4ca41647b0083041eb6cbae1a" name="a2ddea3e4ca41647b0083041eb6cbae1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ddea3e4ca41647b0083041eb6cbae1a">&#9670;&#160;</a></span>hasError()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -371,8 +380,8 @@ $(function() {
 
 </div>
 </div>
-<a id="a540cf67fb329ec8609b81cb6fae944d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a540cf67fb329ec8609b81cb6fae944d4">&#9670;&nbsp;</a></span>lightOff()</h2>
+<a id="a540cf67fb329ec8609b81cb6fae944d4" name="a540cf67fb329ec8609b81cb6fae944d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a540cf67fb329ec8609b81cb6fae944d4">&#9670;&#160;</a></span>lightOff()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -405,8 +414,8 @@ $(function() {
 
 </div>
 </div>
-<a id="ac606da44e4f69f8b3226d018cd404ee0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac606da44e4f69f8b3226d018cd404ee0">&#9670;&nbsp;</a></span>lightOn()</h2>
+<a id="ac606da44e4f69f8b3226d018cd404ee0" name="ac606da44e4f69f8b3226d018cd404ee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac606da44e4f69f8b3226d018cd404ee0">&#9670;&#160;</a></span>lightOn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -439,8 +448,8 @@ $(function() {
 
 </div>
 </div>
-<a id="a2af701f720b93c63dcd53d36604381e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2af701f720b93c63dcd53d36604381e3">&#9670;&nbsp;</a></span>setDetectableColors()</h2>
+<a id="a2af701f720b93c63dcd53d36604381e3" name="a2af701f720b93c63dcd53d36604381e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2af701f720b93c63dcd53d36604381e3">&#9670;&#160;</a></span>setDetectableColors()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -485,8 +494,8 @@ $(function() {
 
 </div>
 </div>
-<a id="a3bebef09de2dbffe897d0dd8e9783923"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3bebef09de2dbffe897d0dd8e9783923">&#9670;&nbsp;</a></span>setLight()</h2>
+<a id="a3bebef09de2dbffe897d0dd8e9783923" name="a3bebef09de2dbffe897d0dd8e9783923"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bebef09de2dbffe897d0dd8e9783923">&#9670;&#160;</a></span>setLight()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -544,7 +553,7 @@ $(function() {
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

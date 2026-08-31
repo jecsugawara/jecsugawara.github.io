@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.9.1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>My Project: ColorSensor.h ソースファイル</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -19,8 +19,8 @@
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
- <tr style="height: 56px;">
-  <td id="projectalign" style="padding-left: 0.5em;">
+ <tr id="projectrow">
+  <td id="projectalign">
    <div id="projectname">My Project
    </div>
   </td>
@@ -29,22 +29,28 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 構築: Doxygen 1.9.1 -->
+<!-- 構築: Doxygen 1.9.8 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
   $(document).ready(function() { init_search(); });
 });
-/* @license-end */</script>
+/* @license-end */
+</script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -55,124 +61,156 @@ $(function() {
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
 </div>
 
 <div class="header">
-  <div class="headertitle">
-<div class="title">ColorSensor.h</div>  </div>
+  <div class="headertitle"><div class="title">ColorSensor.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// ColorSensor.h</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Copyright (c) 2025 Embedded Technology Software Design Robot Contest</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef SPIKE_CPP_API_COLOR_SENSOR_H_ </span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define SPIKE_CPP_API_COLOR_SENSOR_H_</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;spike/pup/colorsensor.h&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;libcpp/spike/Port.h&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>spikeapi {</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="classspikeapi_1_1ColorSensor.html">ColorSensor</a></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structspikeapi_1_1ColorSensor_1_1RGB.html">   28</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structspikeapi_1_1ColorSensor_1_1RGB.html">RGB</a> {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    uint16_t r;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    uint16_t g;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    uint16_t b;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  };</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structspikeapi_1_1ColorSensor_1_1HSV.html">   39</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structspikeapi_1_1ColorSensor_1_1HSV.html">HSV</a> {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    uint16_t h;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    uint8_t  s;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    uint8_t  v;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  };</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a55ff81c2c64ea5296b85f20db9dd6668">   49</a></span>&#160;  <a class="code" href="classspikeapi_1_1ColorSensor.html#a55ff81c2c64ea5296b85f20db9dd6668">ColorSensor</a>(EPort port) { </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    mDevice = pup_color_sensor_get_device(<span class="keyword">static_cast&lt;</span>pbio_port_id_t<span class="keyword">&gt;</span>(port));</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a2e16f781f1dcbe6377bfd6120843c23a">   58</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classspikeapi_1_1ColorSensor.html#a2e16f781f1dcbe6377bfd6120843c23a">getRGB</a>(<a class="code" href="structspikeapi_1_1ColorSensor_1_1RGB.html">RGB</a>&amp; rgb)<span class="keyword"> const </span>{ </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    pup_color_rgb_t pup_rgb = pup_color_sensor_rgb(mDevice);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    rgb.r = pup_rgb.r;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    rgb.g = pup_rgb.g;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    rgb.b = pup_rgb.b;    </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  } </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a73643cdb18503b388cbc87ccc059ff4a">   70</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classspikeapi_1_1ColorSensor.html#a73643cdb18503b388cbc87ccc059ff4a">getColor</a>(<a class="code" href="structspikeapi_1_1ColorSensor_1_1HSV.html">HSV</a>&amp; hsv, <span class="keywordtype">bool</span> surface = <span class="keyword">true</span>)<span class="keyword"> const </span>{ </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    pup_color_hsv_t pup_hsv = pup_color_sensor_color(mDevice, surface);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    hsv.h = pup_hsv.h;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    hsv.s = pup_hsv.s;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    hsv.v = pup_hsv.v;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  } </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    </div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a99e63864f0ae4bdfb4b0f29382ad85d4">   82</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classspikeapi_1_1ColorSensor.html#a99e63864f0ae4bdfb4b0f29382ad85d4">getHSV</a>(<a class="code" href="structspikeapi_1_1ColorSensor_1_1HSV.html">HSV</a>&amp; hsv, <span class="keywordtype">bool</span> surface = <span class="keyword">true</span> )<span class="keyword"> const </span>{ </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    pup_color_hsv_t pup_hsv = pup_color_sensor_hsv(mDevice, surface);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    hsv.h = pup_hsv.h;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    hsv.s = pup_hsv.s;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    hsv.v = pup_hsv.v;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  } </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a94f19a2ba0c6edc1d97bd57f77c03365">   93</a></span>&#160;  int32_t <a class="code" href="classspikeapi_1_1ColorSensor.html#a94f19a2ba0c6edc1d97bd57f77c03365">getReflection</a>()<span class="keyword"> const </span>{ </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> pup_color_sensor_reflection(mDevice); </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  } </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    </div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#adadc7d044b06b63cc7467c315588a951">  101</a></span>&#160;  int32_t <a class="code" href="classspikeapi_1_1ColorSensor.html#adadc7d044b06b63cc7467c315588a951">getAmbient</a>()<span class="keyword"> const </span>{ </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">return</span> pup_color_sensor_ambient(mDevice); </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  } </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    </div>
-<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a3bebef09de2dbffe897d0dd8e9783923">  112</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classspikeapi_1_1ColorSensor.html#a3bebef09de2dbffe897d0dd8e9783923">setLight</a>(int32_t bv1, int32_t bv2, int32_t bv3)<span class="keyword"> const </span>{ </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    pup_color_sensor_light_set(mDevice, bv1, bv2, bv3); </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  } </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#ac606da44e4f69f8b3226d018cd404ee0">  121</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classspikeapi_1_1ColorSensor.html#ac606da44e4f69f8b3226d018cd404ee0">lightOn</a>()<span class="keyword"> const </span>{ </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    pup_color_sensor_light_on(mDevice); </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  } </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    </div>
-<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a540cf67fb329ec8609b81cb6fae944d4">  130</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classspikeapi_1_1ColorSensor.html#a540cf67fb329ec8609b81cb6fae944d4">lightOff</a>()<span class="keyword"> const </span>{ </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    pup_color_sensor_light_off(mDevice); </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  } </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    </div>
-<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a2af701f720b93c63dcd53d36604381e3">  140</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classspikeapi_1_1ColorSensor.html#a2af701f720b93c63dcd53d36604381e3">setDetectableColors</a>(int32_t size, pup_color_hsv_t *colors)<span class="keyword"> const </span>{ </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    pup_color_sensor_detectable_colors(size, colors);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  }</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a2ddea3e4ca41647b0083041eb6cbae1a">  148</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classspikeapi_1_1ColorSensor.html#a2ddea3e4ca41647b0083041eb6cbae1a">hasError</a>() { <span class="keywordflow">return</span> mDevice == 0; }</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keyword">private</span>: </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  pup_device_t *mDevice;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}; <span class="comment">// class ColorSensor</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}  <span class="comment">// namespace spikeapi</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// !SPIKE_CPP_API_COLOR_SENSOR_H_</span></div>
-<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html">spikeapi::ColorSensor</a></div><div class="ttdoc">SPIKE カラーセンサークラス</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:22</div></div>
-<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a2af701f720b93c63dcd53d36604381e3"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a2af701f720b93c63dcd53d36604381e3">spikeapi::ColorSensor::setDetectableColors</a></div><div class="ttdeci">void setDetectableColors(int32_t size, pup_color_hsv_t *colors) const</div><div class="ttdoc">カラーセンサーが検知する色を設定する</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:140</div></div>
-<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a2ddea3e4ca41647b0083041eb6cbae1a"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a2ddea3e4ca41647b0083041eb6cbae1a">spikeapi::ColorSensor::hasError</a></div><div class="ttdeci">bool hasError()</div><div class="ttdoc">インスタンス生成が正常にできたかどうかを確認するための共通メソッド</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:148</div></div>
-<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a2e16f781f1dcbe6377bfd6120843c23a"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a2e16f781f1dcbe6377bfd6120843c23a">spikeapi::ColorSensor::getRGB</a></div><div class="ttdeci">void getRGB(RGB &amp;rgb) const</div><div class="ttdoc">カラーセンサーのRGB値を取得する</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:58</div></div>
-<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a3bebef09de2dbffe897d0dd8e9783923"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a3bebef09de2dbffe897d0dd8e9783923">spikeapi::ColorSensor::setLight</a></div><div class="ttdeci">void setLight(int32_t bv1, int32_t bv2, int32_t bv3) const</div><div class="ttdoc">カラーセンサーのライトを設定する</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:112</div></div>
-<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a540cf67fb329ec8609b81cb6fae944d4"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a540cf67fb329ec8609b81cb6fae944d4">spikeapi::ColorSensor::lightOff</a></div><div class="ttdeci">void lightOff() const</div><div class="ttdoc">カラーセンサーのライトを消灯する</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:130</div></div>
-<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a55ff81c2c64ea5296b85f20db9dd6668"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a55ff81c2c64ea5296b85f20db9dd6668">spikeapi::ColorSensor::ColorSensor</a></div><div class="ttdeci">ColorSensor(EPort port)</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:49</div></div>
-<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a73643cdb18503b388cbc87ccc059ff4a"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a73643cdb18503b388cbc87ccc059ff4a">spikeapi::ColorSensor::getColor</a></div><div class="ttdeci">void getColor(HSV &amp;hsv, bool surface=true) const</div><div class="ttdoc">カラーセンサーで色を測定する</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:70</div></div>
-<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a94f19a2ba0c6edc1d97bd57f77c03365"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a94f19a2ba0c6edc1d97bd57f77c03365">spikeapi::ColorSensor::getReflection</a></div><div class="ttdeci">int32_t getReflection() const</div><div class="ttdoc">センサーの発する光を表面がどの程度反射するかを測定する</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:93</div></div>
-<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a99e63864f0ae4bdfb4b0f29382ad85d4"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a99e63864f0ae4bdfb4b0f29382ad85d4">spikeapi::ColorSensor::getHSV</a></div><div class="ttdeci">void getHSV(HSV &amp;hsv, bool surface=true) const</div><div class="ttdoc">カラーセンサーで色を測定する（近似なし）</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:82</div></div>
-<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_ac606da44e4f69f8b3226d018cd404ee0"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#ac606da44e4f69f8b3226d018cd404ee0">spikeapi::ColorSensor::lightOn</a></div><div class="ttdeci">void lightOn() const</div><div class="ttdoc">カラーセンサーのライトを点灯する</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:121</div></div>
-<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_adadc7d044b06b63cc7467c315588a951"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#adadc7d044b06b63cc7467c315588a951">spikeapi::ColorSensor::getAmbient</a></div><div class="ttdeci">int32_t getAmbient() const</div><div class="ttdoc">周囲の光の強度を測定する</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:101</div></div>
-<div class="ttc" id="astructspikeapi_1_1ColorSensor_1_1HSV_html"><div class="ttname"><a href="structspikeapi_1_1ColorSensor_1_1HSV.html">spikeapi::ColorSensor::HSV</a></div><div class="ttdoc">HSV構造体</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:39</div></div>
-<div class="ttc" id="astructspikeapi_1_1ColorSensor_1_1RGB_html"><div class="ttname"><a href="structspikeapi_1_1ColorSensor_1_1RGB.html">spikeapi::ColorSensor::RGB</a></div><div class="ttdoc">RGB構造体</div><div class="ttdef"><b>Definition:</b> ColorSensor.h:28</div></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// ColorSensor.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Copyright (c) 2025 Embedded Technology Software Design Robot Contest</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">//</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef SPIKE_CPP_API_COLOR_SENSOR_H_ </span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define SPIKE_CPP_API_COLOR_SENSOR_H_</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;spike/pup/colorsensor.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;libcpp/spike/Port.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span>spikeapi {</div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html">   26</a></span><span class="keyword">class </span><a class="code hl_class" href="classspikeapi_1_1ColorSensor.html">ColorSensor</a></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structspikeapi_1_1ColorSensor_1_1RGB.html">   33</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structspikeapi_1_1ColorSensor_1_1RGB.html">RGB</a> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    uint16_t r;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    uint16_t g;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    uint16_t b;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  };</div>
+</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structspikeapi_1_1ColorSensor_1_1HSV.html">   44</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structspikeapi_1_1ColorSensor_1_1HSV.html">HSV</a> {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    uint16_t h;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    uint8_t  s;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    uint8_t  v;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  };</div>
+</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  </div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a55ff81c2c64ea5296b85f20db9dd6668">   54</a></span>  <a class="code hl_function" href="classspikeapi_1_1ColorSensor.html#a55ff81c2c64ea5296b85f20db9dd6668">ColorSensor</a>(EPort port) { </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    mDevice = pup_color_sensor_get_device(<span class="keyword">static_cast&lt;</span>pbio_port_id_t<span class="keyword">&gt;</span>(port));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  }</div>
+</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  </div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a2e16f781f1dcbe6377bfd6120843c23a">   64</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classspikeapi_1_1ColorSensor.html#a2e16f781f1dcbe6377bfd6120843c23a">getRGB</a>(<a class="code hl_struct" href="structspikeapi_1_1ColorSensor_1_1RGB.html">RGB</a>&amp; rgb)<span class="keyword"> const </span>{ </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    pup_color_rgb_t pup_rgb = pup_color_sensor_rgb(mDevice);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    rgb.r = pup_rgb.r;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    rgb.g = pup_rgb.g;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    rgb.b = pup_rgb.b;    </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  } </div>
+</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    </div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a73643cdb18503b388cbc87ccc059ff4a">   77</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classspikeapi_1_1ColorSensor.html#a73643cdb18503b388cbc87ccc059ff4a">getColor</a>(<a class="code hl_struct" href="structspikeapi_1_1ColorSensor_1_1HSV.html">HSV</a>&amp; hsv, <span class="keywordtype">bool</span> surface = <span class="keyword">true</span>)<span class="keyword"> const </span>{ </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    pup_color_hsv_t pup_hsv = pup_color_sensor_color(mDevice, surface);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    hsv.h = pup_hsv.h;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    hsv.s = pup_hsv.s;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    hsv.v = pup_hsv.v;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  } </div>
+</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    </div>
+<div class="foldopen" id="foldopen00090" data-start="{" data-end="}">
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a99e63864f0ae4bdfb4b0f29382ad85d4">   90</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classspikeapi_1_1ColorSensor.html#a99e63864f0ae4bdfb4b0f29382ad85d4">getHSV</a>(<a class="code hl_struct" href="structspikeapi_1_1ColorSensor_1_1HSV.html">HSV</a>&amp; hsv, <span class="keywordtype">bool</span> surface = <span class="keyword">true</span> )<span class="keyword"> const </span>{ </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    pup_color_hsv_t pup_hsv = pup_color_sensor_hsv(mDevice, surface);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    hsv.h = pup_hsv.h;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    hsv.s = pup_hsv.s;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    hsv.v = pup_hsv.v;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  } </div>
+</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    </div>
+<div class="foldopen" id="foldopen00102" data-start="{" data-end="}">
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a94f19a2ba0c6edc1d97bd57f77c03365">  102</a></span>  int32_t <a class="code hl_function" href="classspikeapi_1_1ColorSensor.html#a94f19a2ba0c6edc1d97bd57f77c03365">getReflection</a>()<span class="keyword"> const </span>{ </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">return</span> pup_color_sensor_reflection(mDevice); </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  } </div>
+</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    </div>
+<div class="foldopen" id="foldopen00111" data-start="{" data-end="}">
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#adadc7d044b06b63cc7467c315588a951">  111</a></span>  int32_t <a class="code hl_function" href="classspikeapi_1_1ColorSensor.html#adadc7d044b06b63cc7467c315588a951">getAmbient</a>()<span class="keyword"> const </span>{ </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">return</span> pup_color_sensor_ambient(mDevice); </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  } </div>
+</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    </div>
+<div class="foldopen" id="foldopen00122" data-start="{" data-end="}">
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a3bebef09de2dbffe897d0dd8e9783923">  122</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classspikeapi_1_1ColorSensor.html#a3bebef09de2dbffe897d0dd8e9783923">setLight</a>(int32_t bv1, int32_t bv2, int32_t bv3)<span class="keyword"> const </span>{ </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    pup_color_sensor_light_set(mDevice, bv1, bv2, bv3); </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  } </div>
+</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    </div>
+<div class="foldopen" id="foldopen00131" data-start="{" data-end="}">
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#ac606da44e4f69f8b3226d018cd404ee0">  131</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classspikeapi_1_1ColorSensor.html#ac606da44e4f69f8b3226d018cd404ee0">lightOn</a>()<span class="keyword"> const </span>{ </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    pup_color_sensor_light_on(mDevice); </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  } </div>
+</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    </div>
+<div class="foldopen" id="foldopen00140" data-start="{" data-end="}">
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a540cf67fb329ec8609b81cb6fae944d4">  140</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classspikeapi_1_1ColorSensor.html#a540cf67fb329ec8609b81cb6fae944d4">lightOff</a>()<span class="keyword"> const </span>{ </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    pup_color_sensor_light_off(mDevice); </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  } </div>
+</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    </div>
+<div class="foldopen" id="foldopen00150" data-start="{" data-end="}">
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a2af701f720b93c63dcd53d36604381e3">  150</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classspikeapi_1_1ColorSensor.html#a2af701f720b93c63dcd53d36604381e3">setDetectableColors</a>(int32_t size, pup_color_hsv_t *colors)<span class="keyword"> const </span>{ </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    pup_color_sensor_detectable_colors(size, colors);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  }</div>
+</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="classspikeapi_1_1ColorSensor.html#a2ddea3e4ca41647b0083041eb6cbae1a">  158</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classspikeapi_1_1ColorSensor.html#a2ddea3e4ca41647b0083041eb6cbae1a">hasError</a>() { <span class="keywordflow">return</span> mDevice == 0; }</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="keyword">private</span>: </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  pup_device_t *mDevice;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>}; <span class="comment">// class ColorSensor</span></div>
+</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>}  <span class="comment">// namespace spikeapi</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="preprocessor">#endif </span><span class="comment">// !SPIKE_CPP_API_COLOR_SENSOR_H_</span></div>
+<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html">spikeapi::ColorSensor</a></div><div class="ttdoc">SPIKE カラーセンサークラス</div><div class="ttdef"><b>Definition</b> ColorSensor.h:27</div></div>
+<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a2af701f720b93c63dcd53d36604381e3"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a2af701f720b93c63dcd53d36604381e3">spikeapi::ColorSensor::setDetectableColors</a></div><div class="ttdeci">void setDetectableColors(int32_t size, pup_color_hsv_t *colors) const</div><div class="ttdoc">カラーセンサーが検知する色を設定する</div><div class="ttdef"><b>Definition</b> ColorSensor.h:150</div></div>
+<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a2ddea3e4ca41647b0083041eb6cbae1a"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a2ddea3e4ca41647b0083041eb6cbae1a">spikeapi::ColorSensor::hasError</a></div><div class="ttdeci">bool hasError()</div><div class="ttdoc">インスタンス生成が正常にできたかどうかを確認するための共通メソッド</div><div class="ttdef"><b>Definition</b> ColorSensor.h:158</div></div>
+<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a2e16f781f1dcbe6377bfd6120843c23a"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a2e16f781f1dcbe6377bfd6120843c23a">spikeapi::ColorSensor::getRGB</a></div><div class="ttdeci">void getRGB(RGB &amp;rgb) const</div><div class="ttdoc">カラーセンサーのRGB値を取得する</div><div class="ttdef"><b>Definition</b> ColorSensor.h:64</div></div>
+<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a3bebef09de2dbffe897d0dd8e9783923"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a3bebef09de2dbffe897d0dd8e9783923">spikeapi::ColorSensor::setLight</a></div><div class="ttdeci">void setLight(int32_t bv1, int32_t bv2, int32_t bv3) const</div><div class="ttdoc">カラーセンサーのライトを設定する</div><div class="ttdef"><b>Definition</b> ColorSensor.h:122</div></div>
+<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a540cf67fb329ec8609b81cb6fae944d4"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a540cf67fb329ec8609b81cb6fae944d4">spikeapi::ColorSensor::lightOff</a></div><div class="ttdeci">void lightOff() const</div><div class="ttdoc">カラーセンサーのライトを消灯する</div><div class="ttdef"><b>Definition</b> ColorSensor.h:140</div></div>
+<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a55ff81c2c64ea5296b85f20db9dd6668"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a55ff81c2c64ea5296b85f20db9dd6668">spikeapi::ColorSensor::ColorSensor</a></div><div class="ttdeci">ColorSensor(EPort port)</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition</b> ColorSensor.h:54</div></div>
+<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a73643cdb18503b388cbc87ccc059ff4a"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a73643cdb18503b388cbc87ccc059ff4a">spikeapi::ColorSensor::getColor</a></div><div class="ttdeci">void getColor(HSV &amp;hsv, bool surface=true) const</div><div class="ttdoc">カラーセンサーで色を測定する</div><div class="ttdef"><b>Definition</b> ColorSensor.h:77</div></div>
+<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a94f19a2ba0c6edc1d97bd57f77c03365"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a94f19a2ba0c6edc1d97bd57f77c03365">spikeapi::ColorSensor::getReflection</a></div><div class="ttdeci">int32_t getReflection() const</div><div class="ttdoc">センサーの発する光を表面がどの程度反射するかを測定する</div><div class="ttdef"><b>Definition</b> ColorSensor.h:102</div></div>
+<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_a99e63864f0ae4bdfb4b0f29382ad85d4"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#a99e63864f0ae4bdfb4b0f29382ad85d4">spikeapi::ColorSensor::getHSV</a></div><div class="ttdeci">void getHSV(HSV &amp;hsv, bool surface=true) const</div><div class="ttdoc">カラーセンサーで色を測定する（近似なし）</div><div class="ttdef"><b>Definition</b> ColorSensor.h:90</div></div>
+<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_ac606da44e4f69f8b3226d018cd404ee0"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#ac606da44e4f69f8b3226d018cd404ee0">spikeapi::ColorSensor::lightOn</a></div><div class="ttdeci">void lightOn() const</div><div class="ttdoc">カラーセンサーのライトを点灯する</div><div class="ttdef"><b>Definition</b> ColorSensor.h:131</div></div>
+<div class="ttc" id="aclassspikeapi_1_1ColorSensor_html_adadc7d044b06b63cc7467c315588a951"><div class="ttname"><a href="classspikeapi_1_1ColorSensor.html#adadc7d044b06b63cc7467c315588a951">spikeapi::ColorSensor::getAmbient</a></div><div class="ttdeci">int32_t getAmbient() const</div><div class="ttdoc">周囲の光の強度を測定する</div><div class="ttdef"><b>Definition</b> ColorSensor.h:111</div></div>
+<div class="ttc" id="astructspikeapi_1_1ColorSensor_1_1HSV_html"><div class="ttname"><a href="structspikeapi_1_1ColorSensor_1_1HSV.html">spikeapi::ColorSensor::HSV</a></div><div class="ttdoc">HSV構造体</div><div class="ttdef"><b>Definition</b> ColorSensor.h:44</div></div>
+<div class="ttc" id="astructspikeapi_1_1ColorSensor_1_1RGB_html"><div class="ttname"><a href="structspikeapi_1_1ColorSensor_1_1RGB.html">spikeapi::ColorSensor::RGB</a></div><div class="ttdoc">RGB構造体</div><div class="ttdef"><b>Definition</b> ColorSensor.h:33</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
