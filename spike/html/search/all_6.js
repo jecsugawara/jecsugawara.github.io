@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['getacceleration_0',['getAcceleration',['../classspikeapi_1_1IMU.html#ace7db912548d206f0875bf7a34c5b97b',1,'spikeapi::IMU']]],
+  ['getambient_1',['getAmbient',['../classspikeapi_1_1ColorSensor.html#adadc7d044b06b63cc7467c315588a951',1,'spikeapi::ColorSensor']]],
+  ['getangularvelocity_2',['getAngularVelocity',['../classspikeapi_1_1IMU.html#a42060729b594d05a9def762f0785c21f',1,'spikeapi::IMU']]],
+  ['getcolor_3',['getColor',['../classspikeapi_1_1ColorSensor.html#a73643cdb18503b388cbc87ccc059ff4a',1,'spikeapi::ColorSensor']]],
+  ['getcount_4',['getCount',['../classspikeapi_1_1Motor.html#a6877c70f324824b639a12adce9b4d7d7',1,'spikeapi::Motor']]],
+  ['getcurrent_5',['getCurrent',['../classspikeapi_1_1Battery.html#ad8f6d14eb2693b1b96d6cc571e3aa4c0',1,'spikeapi::Battery']]],
+  ['getdistance_6',['getdistance',['../classspikeapi_1_1ForceSensor.html#a5b49745b5a81aff513811d7c66ae9e84',1,'spikeapi::ForceSensor::getDistance()'],['../classspikeapi_1_1UltrasonicSensor.html#a3234707ae0f585a9e3de86e2292da2c2',1,'spikeapi::UltrasonicSensor::getDistance()']]],
+  ['getforce_7',['getForce',['../classspikeapi_1_1ForceSensor.html#ad987386f8a55b60199f257121d06b810',1,'spikeapi::ForceSensor']]],
+  ['getheading_8',['getHeading',['../classspikeapi_1_1IMU.html#a8b706692f01f2b1cb54df8288280129d',1,'spikeapi::IMU']]],
+  ['gethsv_9',['getHSV',['../classspikeapi_1_1ColorSensor.html#a99e63864f0ae4bdfb4b0f29382ad85d4',1,'spikeapi::ColorSensor']]],
+  ['getpower_10',['getPower',['../classspikeapi_1_1Motor.html#ac824ec3a0700b03b9927307be77d1f55',1,'spikeapi::Motor']]],
+  ['getreflection_11',['getReflection',['../classspikeapi_1_1ColorSensor.html#a94f19a2ba0c6edc1d97bd57f77c03365',1,'spikeapi::ColorSensor']]],
+  ['getrgb_12',['getRGB',['../classspikeapi_1_1ColorSensor.html#a2e16f781f1dcbe6377bfd6120843c23a',1,'spikeapi::ColorSensor']]],
+  ['getspeed_13',['getSpeed',['../classspikeapi_1_1Motor.html#afbc11a7c2e14a6c400dfa634e3ed38d4',1,'spikeapi::Motor']]],
+  ['gettemperature_14',['getTemperature',['../classspikeapi_1_1IMU.html#a7102e9af4d1d7cd22844c76a23f6b434',1,'spikeapi::IMU']]],
+  ['gettim_15',['getTim',['../classspikeapi_1_1Clock.html#aedad18c74fa9685c51ae57580f4c8c85',1,'spikeapi::Clock']]],
+  ['getvoltage_16',['getVoltage',['../classspikeapi_1_1Battery.html#a0727e0748d64a11296810ded1788c119',1,'spikeapi::Battery']]]
+];
