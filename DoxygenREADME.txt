@@ -12,6 +12,8 @@
    (本家の内容が変更された場合は変更部分のみをコピーすること。そうしないと変更内容がすべて上書きされてしまう！)
    cp -r ~/etrobo/spike-rt/drivers/include/libcpp/spike/ ~/jecsugawara.github.io/
 
+   **注意** GitHub Pagesにアップロードするファイルにリンク切れのシンボリックリンクがあるとデプロイ時にエラーとなる。 
+
 3) C++のヘッダファイルにDoxygen形式のコメントを追加する
    ~/etrobo/spike-rt/drivers/include/libcpp/spike/の下の IMU.h や ColorSensor.h を編集する。
 
