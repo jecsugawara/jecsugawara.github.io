@@ -4,6 +4,7 @@
    sudo apt install doxygen graphviz
 
 1) GitHubのリポジトリ「git@github.com:jecsugawara.github.io.git」をホームディレクトリにcloneする
+   cd ~
    git clone git@github.com:jecsugawara.github.io.git
 
    ~/jecsugawara.github.io ディレクトリが作成される。

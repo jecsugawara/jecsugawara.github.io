@@ -13,7 +13,7 @@ extern "C" {
 
 namespace spikeapi {
 /**
- * @brief SPIKE ハブ内蔵IMUクラス
+ * @brief SPIKE ハブ内蔵IMU(Inertial Measurement Unit)クラス 慣性計測装置
  * @details このクラスはSPIKEハブの内蔵IMUセンサーを操作するためのインターフェースを提供します。IMU(Inertial Measurement Unit)
  * クラスとは慣性計測ユニットのことでジャイロセンサーや加速度センサーのことです。また、角度は右ねじの方向が正です。
  * サンプリングレートは833Hz(1.2ms周期)。レイテンシは1mscから数ms程度。
@@ -26,14 +26,14 @@ class IMU
 {
 public:
 
-  /** @brief 加速度 mm/s^2 */
+  /** @brief 加速度構造体 mm/s^2 */
   struct Acceleration {
     float x;
     float y;
     float z;
   };
 
-  /** @brief 角速度 degree/s */
+  /** @brief 角速度構造体 degree/s */
   struct AngularVelocity {
     float x;
     float y;
